@@ -322,7 +322,11 @@ const singleMusic = () => {
                           </div>
                         </div>
                       </div>
-                      <div>{review.rating}</div>
+                      {review.rating == "Good" ? (
+                        <div className="text-base font-semibold text-[#00C288] w-[75px] bg-[#EBFFF9] h-[32px] flex justify-center items-center rounded-[64px]">
+                          {review.rating}
+                        </div>
+                      ) : null}
                       <div className="w-full pr-4 font-medium text-base text-[#666666]">
                         {review.text}
                       </div>
