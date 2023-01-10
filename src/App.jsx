@@ -4,6 +4,13 @@ import Signup from "./pages/signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PopUpLayout from "./components/PopUpLayout";
 import Home from "./pages/dashboard/home";
+import Library from "./pages/dashboard/library";
+import Transaction from "./pages/dashboard/transaction";
+import Feedback from "./pages/dashboard/feedback";
+import Settings from "./pages/dashboard/settings";
+import Profile from "./pages/dashboard/profile";
+import { MdSingleBed } from "react-icons/md";
+import SingleMusic from "./pages/dashboard/singleMusic";
 
 const App = () => {
   return (
@@ -18,6 +25,12 @@ const App = () => {
         {/* DASHBOARD PAGES */}
         <Routes>
           <Route path="/dashboard/home" element={<Home />} />
+          <Route path="/dashboard/library" element={<Library />} />
+          <Route path="/dashboard/:songName" element={<SingleMusic />} />
+          <Route path="/dashboard/transaction" element={<Transaction />} />
+          <Route path="/dashboard/feedback" element={<Feedback />} />
+          <Route path="/dashboard/profile" element={<Profile />} />
+          <Route path="/dashboard/settings" element={<Settings />} />
         </Routes>
       </Router>
       {/* <PopUpLayout /> */}
