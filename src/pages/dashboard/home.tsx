@@ -586,7 +586,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-[330px] max-md:w-full h-[140px] rounded-xl bg-[#F5F8FF] flex items-center gap-4 px-4">
+              <div className="w-[330px] max-md:w-full h-[140px] rounded-xl bg-[#FFFAF0] flex items-center gap-4 px-4">
                 {svgStar()}
                 <div className="flex flex-col">
                   <div className="font-bold text-[32px] text-[black]">4.5</div>
@@ -595,7 +595,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-[330px] max-md:w-full h-[140px] rounded-xl bg-[#F5F8FF] flex items-center gap-4 px-4">
+              <div className="w-[330px] max-md:w-full h-[140px] rounded-xl bg-[#F5FFFC] flex items-center gap-4 px-4">
                 {svgDollar()}
                 <div className="flex flex-col">
                   <div className="font-bold text-[32px] text-[black]">
