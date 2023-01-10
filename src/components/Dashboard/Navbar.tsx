@@ -24,6 +24,12 @@ const Navbar = (props) => {
       },
     },
     {
+      name: "sound",
+      svg: () => {
+        return <IoMdMusicalNote />;
+      },
+    },
+    {
       name: "transaction",
       svg: () => {
         return <AiOutlineDollar />;
@@ -53,7 +59,7 @@ const Navbar = (props) => {
       className="w-[280px] h-screen max-md:hidden fixed border-r border-[#E2EAFE] py-12 bg-[white] transition duration-150 ease-in-out"
       ref={props.navRef}
     >
-      <div className="flex justify-between items-center px-6 mb-10">
+      <div className="flex justify-between items-center px-6 mb-8">
         <svg
           width="70"
           height="15"
@@ -91,7 +97,7 @@ const Navbar = (props) => {
           return (
             <Link to={`/dashboard/${link.name}`}>
               <div
-                className={`px-6 flex items-center gap-4 capitalize w-full h-[72px] text-lg font-semibold cursor-pointer ${
+                className={`px-6 flex items-center gap-4 capitalize w-full h-[68px] text-lg font-semibold cursor-pointer ${
                   activeRoute
                     ? "text-[#3B71F7] bg-[#FAFBFF] border-r-[6px] border-[#3B71F7]"
                     : "text-[#999999]"
