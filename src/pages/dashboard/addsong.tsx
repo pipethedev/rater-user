@@ -10,7 +10,7 @@ const addsong = () => {
     setfileName(event.target.files[0].name);
   }
   const navigate = useNavigate();
-  const [steps, setsteps] = useState(2);
+  const [steps, setsteps] = useState(1);
   return (
     <DashboardLayout>
       <div className="w-full flex justify-between items-center h-[58px] mb-6">
