@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 import { useNavigate, useParams } from "react-router-dom";
+import { RaterContext } from "../../App";
+import Axios from "axios";
 
 const singleMusic = () => {
+  ///song/:songId
   const navigate = useNavigate();
-  let { songName } = useParams();
+  const [music, setmusic] = useState();
+  const { baseUrl, token } = useContext(RaterContext);
+  let { id } = useParams();
 
   const playSvg = () => {
     return (
@@ -117,6 +122,22 @@ const singleMusic = () => {
 
   const [side, setside] = useState("reviews");
 
+  const mytoken = localStorage.getItem("token");
+
+  useEffect(() => {
+    Axios.get(`${baseUrl}api/v1/song/${id}`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setmusic(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <DashboardLayout>
@@ -179,7 +200,7 @@ const singleMusic = () => {
               />
             </svg>
             <div className="text-[#3B71F7] font-semibold text-sm">
-              {songName}
+              SONG name
             </div>
           </div>
           <section className="flex max-md:flex-wrap my-6">
@@ -213,7 +234,7 @@ const singleMusic = () => {
             </div>
             <div className="w-[70%] flex flex-col justify-center max-md:w-full">
               <div className="text-[black] font-semibold text-[40px] max-md:text-2xl">
-                {songName}
+                song name
               </div>
               <div className="font-medium text-lg max-md:text-base text-[#666666]">
                 Play Time — 2mins 45sec

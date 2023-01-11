@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,30 +13,37 @@ import { MdSingleBed } from "react-icons/md";
 import SingleMusic from "./pages/dashboard/singleMusic";
 import AddSong from "./pages/dashboard/addsong";
 
-const App = () => {
-  return (
-    <div className="font-grotesk">
-      <Router>
-        {/* AUTH PAGES  */}
-        <Routes>
-          <Route path="/" element={<Login />} />{" "}
-          <Route path="/signup" element={<Signup />} />{" "}
-        </Routes>
+export const RaterContext = createContext();
 
-        {/* DASHBOARD PAGES */}
-        <Routes>
-          <Route path="/dashboard/home" element={<Home />} />
-          <Route path="/dashboard/library" element={<Library />} />
-          <Route path="/dashboard/sound" element={<AddSong />} />
-          <Route path="/dashboard/:songName" element={<SingleMusic />} />
-          <Route path="/dashboard/transaction" element={<Transaction />} />
-          <Route path="/dashboard/feedback" element={<Feedback />} />
-          <Route path="/dashboard/profile" element={<Profile />} />
-          <Route path="/dashboard/settings" element={<Settings />} />
-        </Routes>
-      </Router>
-      {/* <PopUpLayout /> */}
-    </div>
+const App = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [token, settoken] = useState();
+  console.log(token);
+  return (
+    <RaterContext.Provider value={{ baseUrl, settoken, token }}>
+      <div className="font-grotesk">
+        <Router>
+          {/* AUTH PAGES  */}
+          <Routes>
+            <Route path="/login" element={<Login />} />{" "}
+            <Route path="/" element={<Signup />} />{" "}
+          </Routes>
+
+          {/* DASHBOARD PAGES */}
+          <Routes>
+            <Route path="/dashboard/home" element={<Home />} />
+            <Route path="/dashboard/library" element={<Library />} />
+            <Route path="/dashboard/sound" element={<AddSong />} />
+            <Route path="/dashboard/:songName" element={<SingleMusic />} />
+            <Route path="/dashboard/transaction" element={<Transaction />} />
+            <Route path="/dashboard/feedback" element={<Feedback />} />
+            <Route path="/dashboard/profile" element={<Profile />} />
+            <Route path="/dashboard/settings" element={<Settings />} />
+          </Routes>
+        </Router>
+        {/* <PopUpLayout /> */}
+      </div>
+    </RaterContext.Provider>
   );
 };
 

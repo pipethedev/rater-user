@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import LoginImage from "../assets/login.svg";
 import InputContainer from "../components/InputContainer";
 import countries from "../countries.json";
 import { useNavigate } from "react-router-dom";
+import { RaterContext } from "../App";
+import Axios from "axios";
 
 export interface Country {
   name?: string;
@@ -11,14 +13,32 @@ export interface Country {
 }
 
 const Login = () => {
+  const { baseUrl, settoken, token } = useContext(RaterContext);
   const navigate = useNavigate();
-  function getFlagEmoji(countryCode) {
-    const codePoints = countryCode
-      .toUpperCase()
-      .split("")
-      .map((char) => 127397 + char.charCodeAt());
-    return String.fromCodePoint(...codePoints);
-  }
+
+  const [email, setemail] = useState<string>();
+  const [password, setpassword] = useState<string>();
+
+  const handleLogin = async () => {
+    if (email && password) {
+      await Axios.post(`${baseUrl}api/v1/auth/login`, {
+        email: email,
+        password: password,
+      })
+        .then((res) => {
+          console.log(res.data.message);
+          console.log(res.data.data.token);
+          settoken(res.data.data.token);
+          setTimeout(() => {
+            navigate("/dashboard/home");
+          }, 3000);
+          localStorage.setItem("token", res.data.data.token);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Fill all");
+    }
+  };
   return (
     <div>
       <div className="w-screen h-screen p-0 m-0 overflow-x-hidden flex">
@@ -33,10 +53,18 @@ const Login = () => {
           </section>
 
           <div>
-            <InputContainer type="email" labelText="Email Address" />
+            <InputContainer
+              type="email"
+              labelText="Email Address"
+              onChange={(e) => setemail(e.target.value)}
+            />
           </div>
           <div>
-            <InputContainer type="password" labelText="Password" />
+            <InputContainer
+              type="password"
+              labelText="Password"
+              onChange={(e) => setpassword(e.target.value)}
+            />
           </div>
           <div className="full flex gap-3">
             <input
@@ -50,7 +78,10 @@ const Login = () => {
             </label>
           </div>
           <section className="w-full mt-12">
-            <button className="text-base font-semibold text-[white] flex justify-center items-center bg-[#3B71F7] rounded-[64px] h-[56px] w-[228px]">
+            <button
+              className="text-base font-semibold text-[white] flex justify-center items-center bg-[#3B71F7] rounded-[64px] h-[56px] w-[228px]"
+              onClick={handleLogin}
+            >
               Login to Dashboard
             </button>
           </section>
@@ -60,7 +91,7 @@ const Login = () => {
             </div>
             <div
               className="flex text-[#3B71F7] gap-4 items-center text-base font-semibold cursor-pointer"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/")}
             >
               Create One
               <svg

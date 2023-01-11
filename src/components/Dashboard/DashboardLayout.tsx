@@ -6,9 +6,6 @@ import { IoClose } from "react-icons/io5";
 const DashboardLayout = ({ children }: any) => {
   const [showHam, setshowHam] = useState(true);
   const navRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    console.log(navRef.current?.className);
-  }, []);
 
   const show = () => {
     console.log(navRef.current?.className);

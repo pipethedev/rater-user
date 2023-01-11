@@ -1,16 +1,41 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 import InputContainer from "../../components/InputContainer";
+import { RaterContext } from "../../App";
+import Axios from "axios";
 
 const addsong = () => {
+  const [audio, setaudio] = useState();
+  const [title, settitle] = useState();
+  const { baseUrl } = useContext(RaterContext);
   const [fileName, setfileName] = useState("No file selected");
   function handleChange(event) {
     console.log(`Selected file - ${event.target.files[0].name}`);
     setfileName(event.target.files[0].name);
+    console.log(event.target.files[0]);
   }
   const navigate = useNavigate();
   const [steps, setsteps] = useState(1);
+
+  const mytoken = localStorage.getItem("token");
+
+  useEffect(() => {
+    Axios.post(
+      `${baseUrl}api/v1/song/upload`,
+      { audio: audio, title: title, payment_reference: "samotestreference" },
+      {
+        headers: {
+          Authorization: `Bearer ${mytoken}`,
+        },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+      })
+
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <DashboardLayout>
       <div className="w-full flex justify-between items-center h-[58px] mb-6">
@@ -142,7 +167,11 @@ const addsong = () => {
                       Get that Sound Discovered
                     </div>
                   </div>
-                  <InputContainer labelText="Music Title" type="text" />
+                  <InputContainer
+                    labelText="Music Title"
+                    type="text"
+                    onChange={(e) => settitle(e.target.value)}
+                  />
                   <div className="w-full text-center rounded-2xl h-[200px] mt-2">
                     <input
                       id="dropzone-file"

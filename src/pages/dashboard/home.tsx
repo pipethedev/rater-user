@@ -1,5 +1,7 @@
-import React from "react";
+import Axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { RaterContext } from "../../App";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 
 const Home = () => {
@@ -291,6 +293,28 @@ const Home = () => {
       },
     },
   ];
+
+  const { baseUrl, token } = useContext(RaterContext);
+
+  const mytoken = localStorage.getItem("token");
+
+  // console.log(token);
+
+  const [stats, setstats] = useState<any>();
+
+  useEffect(() => {
+    Axios.get(`${baseUrl}api/v1/dashboard/stats`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setstats(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
@@ -589,7 +613,9 @@ const Home = () => {
               <div className="w-[31%] max-lg:w-full h-[140px] rounded-xl bg-[#F5F8FF] flex items-center gap-4 px-4">
                 {svgMusic()}
                 <div className="flex flex-col">
-                  <div className="font-bold text-[32px] text-[black]">3000</div>
+                  <div className="font-bold text-[32px] text-[black]">
+                    {stats?.songs}
+                  </div>
                   <div className="text-[#888888] font-medium text-base">
                     Songs Uploaded
                   </div>
@@ -598,7 +624,9 @@ const Home = () => {
               <div className="w-[31%] max-lg:w-full h-[140px] rounded-xl bg-[#FFFAF0] flex items-center gap-4 px-4">
                 {svgStar()}
                 <div className="flex flex-col">
-                  <div className="font-bold text-[32px] text-[black]">4.5</div>
+                  <div className="font-bold text-[32px] text-[black]">
+                    {stats?.ratings}
+                  </div>
                   <div className="text-[#888888] font-medium text-base">
                     Your Rating
                   </div>
@@ -608,7 +636,7 @@ const Home = () => {
                 {svgDollar()}
                 <div className="flex flex-col">
                   <div className="font-bold text-[32px] flex text-[black]">
-                    ₦125,000
+                    ₦{stats?.payments}
                   </div>
                   <div className="text-[#888888] font-medium text-base">
                     Total payments made
