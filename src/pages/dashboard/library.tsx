@@ -57,6 +57,12 @@ const Library = () => {
     );
   };
 
+  setTimeout(() => {
+    if (musics.length == 0) {
+      navigate("/dashboard/sound/addmusic");
+    }
+  }, 3000);
+
   const musics = [
     {
       songTitle: "Asiwaju",
@@ -140,11 +146,22 @@ const Library = () => {
       <DashboardLayout>
         <div className="w-full">
           {" "}
-          <div className="text-[28px] font-semibold text-[black] px-3">
-            Library
-          </div>
-          <div className="text-[#888888] mt-1 mb-8 font-medium text-sm px-3">
-            All Songs you’ve uploaded on the platform
+          <div className="flex w-full justify-between">
+            <div>
+              <div className="text-[28px] font-semibold text-[black] px-3">
+                Library
+              </div>
+              <div className="text-[#888888] mt-1 mb-8 font-medium text-sm px-3">
+                All Songs you’ve uploaded on the platform
+              </div>
+            </div>
+
+            <div
+              className="font-semibold text-sm text-[white] px-8 max-sm:px-4 max-sm:py-2 max-sm:text-xs bg-[#3B71F7] flex justify-center items-center rounded-[64px] h-[48px] cursor-pointer"
+              onClick={() => navigate("/dashboard/sound")}
+            >
+              Add Music
+            </div>
           </div>
           <div className="flex gap-2 items-center border-t-[1px] border-b-[1px] border-[#e0dcdc] py-4 w-full">
             <div
@@ -240,7 +257,10 @@ const Library = () => {
                 To add a song to the sound page, click the button below
               </div>
               <div className="w-full justify-center flex">
-                <div className="bg-[#3B71F7] cursor-pointer text-[white] rounded-[64px] w-[190px] h-[56px] flex justify-center items-center font-semibold text-base">
+                <div
+                  className="bg-[#3B71F7] cursor-pointer text-[white] rounded-[64px] w-[190px] h-[56px] flex justify-center items-center font-semibold text-base"
+                  onClick={() => navigate("/dashboard/sound")}
+                >
                   Upload your Sound
                 </div>
               </div>

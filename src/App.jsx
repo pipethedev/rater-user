@@ -11,7 +11,7 @@ import Settings from "./pages/dashboard/settings";
 import Profile from "./pages/dashboard/profile";
 import { MdSingleBed } from "react-icons/md";
 import SingleMusic from "./pages/dashboard/singleMusic";
-import Sound from "./pages/dashboard/sound";
+import AddSong from "./pages/dashboard/addsong";
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
         <Routes>
           <Route path="/dashboard/home" element={<Home />} />
           <Route path="/dashboard/library" element={<Library />} />
-          <Route path="/dashboard/sound" element={<Sound />} />
+          <Route path="/dashboard/sound" element={<AddSong />} />
           <Route path="/dashboard/:songName" element={<SingleMusic />} />
           <Route path="/dashboard/transaction" element={<Transaction />} />
           <Route path="/dashboard/feedback" element={<Feedback />} />

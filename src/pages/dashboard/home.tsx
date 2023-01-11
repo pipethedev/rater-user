@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 
 const Home = () => {
+  const navigate = useNavigate();
   const songsAvail = false;
 
   const svgDollar = () => {
@@ -79,7 +81,7 @@ const Home = () => {
 
   const musicCon = () => {
     return (
-      <div className="flex flex-col gap-1 max-md:gap-5 max-md:flex-row max-md:w-full">
+      <div className="flex flex-col gap-1 max-md:gap-5 max-md:flex-row max-md:w-full my-2">
         <div className="w-[244px] h-[211px] max-md:w-[150px] max-md:h-[110px] bg-[#f5f8ff] rounded-xl flex items-center justify-center mb-3">
           <svg
             width="84"
@@ -335,7 +337,245 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            31%{" "}
+            <div className="h-[500px] w-full bg-[#3B71F7] rounded-[20px] flex flex-col items-center gap-8 mt-10 pt-20 relative">
+              <svg
+                width="120"
+                height="120"
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute top-[280px] left-[222px] max-lg:hidden"
+              >
+                <g filter="url(#filter0_b_130_4586)">
+                  <circle cx="60" cy="60" r="60" fill="#5482F8" />
+                </g>
+                <g clip-path="url(#clip0_130_4586)">
+                  <path
+                    d="M77.4815 64.0686C78.5784 60.8581 78.9419 57.0151 78.4033 53.4036C78.056 51.0858 77.0355 48.7923 75.4514 46.7683C72.9653 43.5883 69.5666 42.2275 66.2833 40.9126C63.833 39.9315 61.5177 39.0055 59.6729 37.3716L59.3424 37.0807C58.2536 36.123 57.023 35.0368 56.6411 33.9861C56.2565 32.9227 55.0963 32.3545 54.0225 32.6488C52.9346 32.9593 52.2735 34.0556 52.5091 35.1639L60.4898 72.71C58.4966 72.015 56.1825 71.8198 53.8016 72.3258C47.9948 73.5601 44.0702 78.345 45.0582 82.993C46.0462 87.6409 51.5776 90.4159 57.3844 89.1816C63.1912 87.9473 67.1158 83.1624 66.1279 78.5145L60.9077 53.9557C64.3295 54.4924 70.1632 56.472 73.1164 63.3624C72.9342 63.8107 72.771 64.2859 72.5477 64.6857C71.9619 65.7219 72.3292 67.0356 73.3687 67.6162C74.4016 68.207 75.7135 67.8313 76.2993 66.7951C76.7278 66.0346 77.0698 65.1779 77.3836 64.292C77.4216 64.2222 77.4547 64.1491 77.4815 64.0686Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_130_4586"
+                    x="-240"
+                    y="-240"
+                    width="600"
+                    height="600"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur
+                      in="BackgroundImageFix"
+                      stdDeviation="120"
+                    />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_130_4586"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_130_4586"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0_130_4586">
+                    <rect
+                      width="56"
+                      height="56"
+                      fill="white"
+                      transform="translate(26.7903 38.4336) rotate(-12)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <svg
+                width="72"
+                height="72"
+                viewBox="0 0 72 72"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute left-[57px] top-[390px] max-lg:hidden"
+              >
+                <g filter="url(#filter0_b_130_4591)">
+                  <circle cx="36" cy="36" r="36" fill="#5482F8" />
+                </g>
+                <g clip-path="url(#clip0_130_4591)">
+                  <path
+                    d="M46.489 38.4412C47.1471 36.515 47.3652 34.2092 47.0421 32.0422C46.8337 30.6516 46.2214 29.2755 45.2709 28.0611C43.7793 26.1531 41.74 25.3366 39.7701 24.5476C38.2999 23.959 36.9107 23.4034 35.8039 22.4231L35.6056 22.2485C34.9523 21.6739 34.2139 21.0222 33.9847 20.3918C33.754 19.7537 33.0579 19.4128 32.4136 19.5894C31.7609 19.7757 31.3642 20.4335 31.5056 21.0984L36.294 43.6261C35.0981 43.2091 33.7096 43.092 32.2811 43.3956C28.797 44.1362 26.4422 47.0071 27.035 49.7959C27.6278 52.5847 30.9467 54.2496 34.4308 53.509C37.9148 52.7685 40.2696 49.8976 39.6768 47.1088L36.5447 32.3735C38.5978 32.6955 42.098 33.8833 43.8699 38.0175C43.7606 38.2865 43.6627 38.5716 43.5287 38.8115C43.1772 39.4332 43.3976 40.2214 44.0213 40.5698C44.6411 40.9243 45.4282 40.6989 45.7797 40.0772C46.0368 39.6208 46.242 39.1068 46.4303 38.5753C46.4531 38.5334 46.4729 38.4896 46.489 38.4412Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_130_4591"
+                    x="-240"
+                    y="-240"
+                    width="552"
+                    height="552"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur
+                      in="BackgroundImageFix"
+                      stdDeviation="120"
+                    />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_130_4591"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_130_4591"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0_130_4591">
+                    <rect
+                      width="33.6"
+                      height="33.6"
+                      fill="white"
+                      transform="translate(16.0742 23.0601) rotate(-12)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <svg
+                width="156"
+                height="156"
+                viewBox="0 0 156 156"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute top-[280px] right-[200px] max-lg:hidden"
+              >
+                <g filter="url(#filter0_b_130_4595)">
+                  <circle
+                    cx="78"
+                    cy="78.0001"
+                    r="60"
+                    transform="rotate(-21 78 78.0001)"
+                    fill="#5482F8"
+                  />
+                </g>
+                <g clip-path="url(#clip0_130_4595)">
+                  <path
+                    d="M95.7785 75.5336C95.652 72.1433 94.6142 68.4253 92.817 65.2466C91.6622 63.2073 89.8876 61.4318 87.6833 60.1099C84.2228 58.0321 80.5621 57.9796 77.0257 57.9287C74.3866 57.8909 71.8932 57.8561 69.5854 56.9919L69.1726 56.8387C67.8129 56.3348 66.2747 55.7618 65.5417 54.9177C64.8015 54.0628 63.5148 53.9481 62.6178 54.6077C61.7134 55.2875 61.4891 56.5478 62.1062 57.498L83.0122 89.6904C80.9023 89.7558 78.672 90.4029 76.6306 91.7285C71.6518 94.9618 69.7026 100.835 72.2906 104.821C74.8787 108.806 81.0372 109.414 86.016 106.181C90.9948 102.948 92.9439 97.074 90.3559 93.0888L76.6814 72.0319C80.0682 71.3067 86.2238 71.0642 91.4503 76.4386C91.4409 76.9225 91.4587 77.4246 91.3935 77.8779C91.218 79.0551 92.0317 80.1499 93.2103 80.3195C94.3863 80.5009 95.4764 79.68 95.6519 78.5027C95.7794 77.6391 95.7917 76.7168 95.7672 75.7773C95.7777 75.6985 95.7823 75.6184 95.7785 75.5336Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_130_4595"
+                    x="-222.016"
+                    y="-222.016"
+                    width="600.032"
+                    height="600.032"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur
+                      in="BackgroundImageFix"
+                      stdDeviation="120"
+                    />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_130_4595"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_130_4595"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0_130_4595">
+                    <rect
+                      width="56"
+                      height="56"
+                      fill="white"
+                      transform="translate(39.2673 69.7671) rotate(-33)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <svg
+                width="72"
+                height="72"
+                viewBox="0 0 72 72"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute bottom-10 right-10 max-lg:hidden"
+              >
+                <g filter="url(#filter0_b_130_4599)">
+                  <circle cx="36" cy="36" r="36" fill="#5482F8" />
+                </g>
+                <g clip-path="url(#clip0_130_4599)">
+                  <path
+                    d="M46.4889 38.4412C47.1471 36.515 47.3652 34.2092 47.042 32.0422C46.8336 30.6516 46.2214 29.2755 45.2709 28.0611C43.7792 26.1531 41.74 25.3366 39.77 24.5476C38.2998 23.959 36.9107 23.4034 35.8038 22.4231L35.6055 22.2485C34.9522 21.6739 34.2138 21.0222 33.9847 20.3918C33.7539 19.7537 33.0578 19.4128 32.4135 19.5894C31.7608 19.7757 31.3642 20.4335 31.5055 21.0984L36.2939 43.6261C35.098 43.2091 33.7095 43.092 32.281 43.3956C28.7969 44.1362 26.4422 47.0071 27.035 49.7959C27.6277 52.5847 30.9466 54.2496 34.4307 53.509C37.9148 52.7685 40.2695 49.8976 39.6768 47.1088L36.5447 32.3735C38.5977 32.6955 42.0979 33.8833 43.8699 38.0175C43.7606 38.2865 43.6626 38.5716 43.5286 38.8115C43.1772 39.4332 43.3976 40.2214 44.0213 40.5698C44.641 40.9243 45.4281 40.6989 45.7796 40.0772C46.0367 39.6208 46.2419 39.1068 46.4302 38.5753C46.453 38.5334 46.4728 38.4896 46.4889 38.4412Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_130_4599"
+                    x="-240"
+                    y="-240"
+                    width="552"
+                    height="552"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur
+                      in="BackgroundImageFix"
+                      stdDeviation="120"
+                    />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_130_4599"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_130_4599"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0_130_4599">
+                    <rect
+                      width="33.6"
+                      height="33.6"
+                      fill="white"
+                      transform="translate(16.0742 23.0601) rotate(-12)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+
+              <div className="text-[white] font-semibold text-[40px] w-full text-center">
+                Upload your First Sound
+              </div>
+              <div className="text-base font-medium text-[rgb(255,255,255,0.6)] w-[500px] max-md:w-[70%] text-center">
+                A password reset link has been sent to the email address you
+                used in registering on the platform. do check your mail to
+                continue
+              </div>
+              <div
+                className="cursor-pointer rounded-[64px] bg-[#FFC94C] p-[17px] text-[#02123B] text-base font-semibold"
+                onClick={() => navigate("/dashboard/sound")}
+              >
+                Upload your Sound
+              </div>
+            </div>
           </div>
         ) : (
           <div>

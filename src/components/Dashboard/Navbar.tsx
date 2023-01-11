@@ -7,6 +7,7 @@ import { HiOutlineUser } from "react-icons/hi";
 import { BiCog } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { ImSoundcloud } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
 
 const Navbar = (props) => {
@@ -26,7 +27,7 @@ const Navbar = (props) => {
     {
       name: "sound",
       svg: () => {
-        return <IoMdMusicalNote />;
+        return <ImSoundcloud />;
       },
     },
     {

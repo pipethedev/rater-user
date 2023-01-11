@@ -17,7 +17,7 @@ const InputContainer = (Input: Input) => {
       <input
         id="id"
         type={Input.type}
-        className={`focus:border-[#3B71F7] border-[1px] border-[#CCCCCC] rounded-[64px] h-[54px] p-4 w-full outline-none font-medium text-[#261C40] text-base`}
+        className={`focus:border-[#3B71F7] border-[1px] border-[#CCCCCC] rounded-[64px] h-[54px] max-md:h-[48px] p-4 w-full outline-none font-medium text-[#261C40] text-base`}
       />
     </div>
   );
