@@ -25,8 +25,8 @@ const App = () => {
         <Router>
           {/* AUTH PAGES  */}
           <Routes>
-            <Route path="/login" element={<Login />} />{" "}
-            <Route path="/" element={<Signup />} />{" "}
+            <Route path="/" element={<Login />} />{" "}
+            <Route path="/signup" element={<Signup />} />{" "}
           </Routes>
 
           {/* DASHBOARD PAGES */}

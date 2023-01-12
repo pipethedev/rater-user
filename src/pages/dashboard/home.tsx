@@ -303,6 +303,11 @@ const Home = () => {
   const [stats, setstats] = useState<any>();
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     Axios.get(`${baseUrl}api/v1/dashboard/stats`, {
       headers: {
         Authorization: `Bearer ${mytoken}`,

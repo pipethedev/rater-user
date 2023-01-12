@@ -21,6 +21,11 @@ const addsong = () => {
   const mytoken = localStorage.getItem("token");
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     Axios.post(
       `${baseUrl}api/v1/song/upload`,
       { audio: audio, title: title, payment_reference: "samotestreference" },

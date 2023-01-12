@@ -125,6 +125,11 @@ const singleMusic = () => {
   const mytoken = localStorage.getItem("token");
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     Axios.get(`${baseUrl}api/v1/song/${id}`, {
       headers: {
         Authorization: `Bearer ${mytoken}`,

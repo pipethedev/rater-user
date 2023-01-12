@@ -14,6 +14,11 @@ const Profile = () => {
   const [user, setuser] = useState<any>();
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     Axios.get(`${baseUrl}api/v1/user/profile`, {
       headers: {
         Authorization: `Bearer ${mytoken}`,

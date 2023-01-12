@@ -91,7 +91,7 @@ const Login = () => {
             </div>
             <div
               className="flex text-[#3B71F7] gap-4 items-center text-base font-semibold cursor-pointer"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/signup")}
             >
               Create One
               <svg

@@ -12,6 +12,11 @@ const Transaction = () => {
   const mytoken = localStorage.getItem("token");
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     Axios.get(`${baseUrl}api/v1/transactions/my-transactions`, {
       headers: {
         Authorization: `Bearer ${mytoken}`,

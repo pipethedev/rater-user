@@ -14,6 +14,12 @@ const Library = () => {
   const mytoken = localStorage.getItem("token");
 
   useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+
     Axios.get(`${baseUrl}api/v1/song/all`, {
       headers: {
         Authorization: `Bearer ${mytoken}`,

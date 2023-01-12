@@ -15,6 +15,14 @@ const Settings = () => {
   const { baseUrl } = useContext(RaterContext);
   const [side, setside] = useState("edit");
 
+  useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, []);
+
   function getFlagEmoji(countryCode) {
     const codePoints = countryCode
       .toUpperCase()
@@ -58,6 +66,11 @@ const Settings = () => {
     }
   };
   const changePassword = async () => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
     if (oldPass && newPass && newPassConfirm) {
       await Axios.put(
         `${baseUrl}api/v1/user/profile/change-password`,

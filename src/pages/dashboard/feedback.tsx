@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 
@@ -62,6 +62,15 @@ const Feedback = () => {
       text: "This is a classic rock song that has stood the test of time. With its iconic opening guitar riff and operatic vocals, this song is truly one-of-a-kind.",
     },
   ];
+  const mytoken = localStorage.getItem("token");
+  useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, []);
+
   return (
     <DashboardLayout>
       <div className="w-full">
