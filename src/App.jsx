@@ -18,7 +18,6 @@ export const RaterContext = createContext();
 const App = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [token, settoken] = useState();
-  console.log(token);
   return (
     <RaterContext.Provider value={{ baseUrl, settoken, token }}>
       <div className="font-grotesk">

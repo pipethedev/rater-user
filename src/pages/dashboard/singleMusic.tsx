@@ -143,6 +143,20 @@ const singleMusic = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const deleteSong = async () => {
+    await Axios.delete(`${baseUrl}api/v1/song/${id}`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setmusic(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <DashboardLayout>
@@ -157,7 +171,10 @@ const singleMusic = () => {
                 This song has {reviews.length} reviews
               </div>
             </div>
-            <div className="font-semibold text-sm text-[white] py-4 px-8 max-sm:px-4 max-sm:py-2 max-sm:text-xs bg-[#e50000] rounded-[64px]">
+            <div
+              className="font-semibold text-sm text-[white] py-4 px-8 max-sm:px-4 max-sm:py-2 max-sm:text-xs bg-[#e50000] rounded-[64px]"
+              onClick={deleteSong}
+            >
               Delete Music
             </div>
           </div>

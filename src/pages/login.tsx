@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import LoginImage from "../assets/login.svg";
 import InputContainer from "../components/InputContainer";
 import countries from "../countries.json";
@@ -18,6 +18,15 @@ const Login = () => {
 
   const [email, setemail] = useState<string>();
   const [password, setpassword] = useState<string>();
+
+  const mytoken = localStorage.getItem("token");
+  useEffect(() => {
+    if (mytoken) {
+      setTimeout(() => {
+        navigate("/dashboard/home");
+      }, 1000);
+    }
+  }, []);
 
   const handleLogin = async () => {
     if (email && password) {
