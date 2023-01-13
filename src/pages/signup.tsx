@@ -61,7 +61,7 @@ const Signup = () => {
         })
         .catch((err) => {
           console.log(err);
-          toast.error("An error occured.");
+          toast.error("Unable to signup.");
         });
     } else {
       toast.error("Please fill all the fields.");
