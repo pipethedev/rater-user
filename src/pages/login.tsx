@@ -16,6 +16,7 @@ export interface Country {
 const Login = () => {
   const { baseUrl, settoken, token } = useContext(RaterContext);
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
 
   const [email, setemail] = useState<string>();
   const [password, setpassword] = useState<string>();
@@ -30,6 +31,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = async () => {
+    setloading(true);
     if (email && password) {
       await Axios.post(`${baseUrl}api/v1/auth/login`, {
         email: email,
@@ -43,23 +45,32 @@ const Login = () => {
           }
           setTimeout(() => {
             navigate("/dashboard/home");
-          }, 3000);
+          }, 2000);
           localStorage.setItem("token", res.data.data.token);
           toast.success("Successfully logged in!");
+          setloading(false);
         })
         .catch((err) => {
           console.log(err);
-          toast.error("An error occured.");
+          toast.error("Login failed");
+          setloading(false);
         });
     } else {
       toast.error("Please fill all the fields.");
+      setloading(false);
     }
   };
   return (
     <div>
       <div className="w-screen h-screen p-0 m-0 overflow-x-hidden flex">
         <Toaster position="top-left" reverseOrder={false} />
-        <section className="w-[40%] max-md:w-full px-10 py-16 gap-5 flex flex-col">
+        <section className="w-[40%] max-md:w-full px-10 py-16 gap-5 flex flex-col relative">
+          {loading ? (
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+              {" "}
+              <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+            </div>
+          ) : null}
           <section className="mb-6">
             <div className="font-medium text-base text-[#02123B]">
               Hi there Talented Human
@@ -96,8 +107,11 @@ const Login = () => {
           </div>
           <section className="w-full mt-12">
             <button
-              className="text-base font-semibold text-[white] flex justify-center items-center bg-[#3B71F7] rounded-[64px] h-[56px] w-[228px]"
+              className={`text-base font-semibold text-[white] flex justify-center items-center rounded-[64px] h-[56px] w-[228px] ${
+                loading ? "bg-[#bdcdf3]" : "bg-[#3B71F7] cursor-pointer"
+              }`}
               onClick={handleLogin}
+              disabled={loading}
             >
               Login to Dashboard
             </button>
