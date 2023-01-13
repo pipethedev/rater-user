@@ -5,6 +5,7 @@ import countries from "../countries.json";
 import { RaterContext } from "../App";
 import Axios from "axios";
 import { useNavigate } from "react-router";
+import { Toaster, toast } from "react-hot-toast";
 
 export interface Country {
   name?: string;
@@ -38,6 +39,8 @@ const Signup = () => {
       .map((char) => 127397 + char.charCodeAt());
     return String.fromCodePoint(...codePoints);
   }
+
+  const [timer, settimer] = useState(3);
   const handleSignUp = async () => {
     if (firstname && lastName && email && password && mobileNo) {
       await Axios.post(`${baseUrl}api/v1/auth/register`, {
@@ -49,19 +52,26 @@ const Signup = () => {
       })
         .then((res) => {
           console.log(res.data.message);
+
+          toast.success(`Successful! Redirecting in ${timer}!`);
+          setInterval(() => settimer(timer - 1), 1000);
           setTimeout(() => {
-            navigate("/login");
+            navigate("/");
           }, 3000);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.error("An error occured.");
+        });
     } else {
-      console.log("Fill all");
+      toast.error("Please fill all the fields.");
     }
   };
 
   return (
     <div>
       <div className="w-screen h-screen p-0 m-0 overflow-x-hidden flex">
+        <Toaster position="top-left" reverseOrder={true} />
         <section className="bg-[#3B71F7] w-[60%] h-full relative max-md:hidden">
           <img
             src={SignupImage}

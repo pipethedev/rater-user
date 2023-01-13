@@ -5,6 +5,7 @@ import countries from "../countries.json";
 import { useNavigate } from "react-router-dom";
 import { RaterContext } from "../App";
 import Axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
 
 export interface Country {
   name?: string;
@@ -38,19 +39,26 @@ const Login = () => {
           console.log(res.data.message);
           console.log(res.data.data.token);
           settoken(res.data.data.token);
+          if (res.data.message) {
+          }
           setTimeout(() => {
             navigate("/dashboard/home");
           }, 3000);
           localStorage.setItem("token", res.data.data.token);
+          toast.success("Successfully logged in!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.error("An error occured.");
+        });
     } else {
-      console.log("Fill all");
+      toast.error("Please fill all the fields.");
     }
   };
   return (
     <div>
       <div className="w-screen h-screen p-0 m-0 overflow-x-hidden flex">
+        <Toaster position="top-left" reverseOrder={false} />
         <section className="w-[40%] max-md:w-full px-10 py-16 gap-5 flex flex-col">
           <section className="mb-6">
             <div className="font-medium text-base text-[#02123B]">
