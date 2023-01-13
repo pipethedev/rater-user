@@ -5,32 +5,32 @@ import { RaterContext } from "../../App";
 import Axios from "axios";
 
 const Profile = () => {
-  const { baseUrl, token } = useContext(RaterContext);
+  const { baseUrl, token, user } = useContext(RaterContext);
 
   const mytoken = localStorage.getItem("token");
 
   // console.log(token);
 
-  const [user, setuser] = useState<any>();
+  // const [user, setuser] = useState<any>();
 
-  useEffect(() => {
-    if (mytoken == null) {
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    }
-    Axios.get(`${baseUrl}api/v1/user/profile`, {
-      headers: {
-        Authorization: `Bearer ${mytoken}`,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        setuser(res.data.data);
-      })
+  // useEffect(() => {
+  //   if (mytoken == null) {
+  //     setTimeout(() => {
+  //       navigate("/");
+  //     }, 3000);
+  //   }
+  //   Axios.get(`${baseUrl}api/v1/user/profile`, {
+  //     headers: {
+  //       Authorization: `Bearer ${mytoken}`,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log(res);
+  //       setuser(res.data.data);
+  //     })
 
-      .catch((err) => console.log(err));
-  }, []);
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const navigate = useNavigate();
   const svgDollar = () => {

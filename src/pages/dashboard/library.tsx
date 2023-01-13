@@ -175,11 +175,11 @@ const Library = () => {
                           {musicSvg()}
                           <div className="flex flex-col gap-2">
                             <div className="font-semibold text-[20px] text-[black] max-md:text-base">
-                              {music.songTitle}
+                              {music.title}
                             </div>
-                            <div className="font-medium text-[#666666] text-sm max-sm:text-[12px]">
+                            {/* <div className="font-medium text-[#666666] text-sm max-sm:text-[12px]">
                               {music.playTime}
-                            </div>
+                            </div> */}
                             {music.rating == "Good" ? (
                               <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
                                 {music.rating}
@@ -188,9 +188,13 @@ const Library = () => {
                               <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
                                 {music.rating}
                               </div>
-                            ) : (
+                            ) : music.rating == "Bad" ? (
                               <div className="text-[#e94444] font-semibold text-base max-md:text-sm bg-[#ffc107] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
                                 {music.rating}
+                              </div>
+                            ) : (
+                              <div className="font-bold text-sm text-[#3a00c2]">
+                                No ratings yet
                               </div>
                             )}
                           </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,14 +12,37 @@ import Profile from "./pages/dashboard/profile";
 import { MdSingleBed } from "react-icons/md";
 import SingleMusic from "./pages/dashboard/singleMusic";
 import AddSong from "./pages/dashboard/addsong";
+import Axios from "axios";
 
 export const RaterContext = createContext();
+
+export const userContext = createContext();
 
 const App = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [token, settoken] = useState();
+  const [user, setuser] = useState();
+  const mytoken = localStorage.getItem("token");
+  useEffect(() => {
+    if (mytoken == null) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+    Axios.get(`${baseUrl}api/v1/user/profile`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        setuser(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <RaterContext.Provider value={{ baseUrl, settoken, token }}>
+    <RaterContext.Provider value={{ baseUrl, settoken, token, user }}>
       <div className="font-grotesk">
         <Router>
           {/* AUTH PAGES  */}
@@ -40,7 +63,6 @@ const App = () => {
             <Route path="/dashboard/settings" element={<Settings />} />
           </Routes>
         </Router>
-        {/* <PopUpLayout /> */}
       </div>
     </RaterContext.Provider>
   );

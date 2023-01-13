@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { RaterContext } from "../../App";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
+import { BsDownload } from "react-icons/bs";
 
 const Transaction = () => {
   const navigate = useNavigate();
@@ -94,16 +95,16 @@ const Transaction = () => {
             </div>
             <section className="w-full">
               <div className="w-full flex h-[64px] bg-[#F5F8FF] items-center mt-10 max-md:gap-1">
-                <div className="w-[14%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                <div className="w-[17%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
                   DATE
                 </div>
-                <div className="w-[32%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                  DESCRIPTION
+                <div className="w-[20%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  STATUS
                 </div>
                 <div className="w-[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
                   AMOUNT
                 </div>
-                <div className="w-[32%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                <div className="w-[42%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
                   REFERENCE
                 </div>
                 <div className="w-[10%] max-md:w[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
@@ -113,22 +114,23 @@ const Transaction = () => {
 
               <div className="flex flex-col w-full max-md:gap-1">
                 {transactions?.map((transaction) => {
+                  const myDate = new Date(transaction.created_at);
                   return (
                     <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
-                      <div className="w-[14%]  text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                        {transaction.date}
+                      <div className="w-[17%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {`${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`}
                       </div>
-                      <div className="w-[32%] max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                        {transaction.description}
+                      <div className="w-[20%] pl-2 max-md:w-[30%] text-[#24dd87] font-semibold text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {transaction.payment_status}
                       </div>
-                      <div className="w-[12%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                      <div className="w-[12%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
                         {transaction.amount}
                       </div>{" "}
-                      <div className="w-[32%] max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                        {transaction.reference}
+                      <div className="w-[42%] pl-2 max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {transaction.pricing_id}
                       </div>
-                      <div className="w-[10%] text-[#666666] text-lg flex px-4 justify-end flex-wrap">
-                        {transaction.action()}
+                      <div className="w-[10%] pl-2 text-lg flex px-4 justify-end flex-wrap text-[#3B71F7]">
+                        <BsDownload />
                       </div>
                     </div>
                   );

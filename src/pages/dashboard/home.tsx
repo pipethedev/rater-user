@@ -294,7 +294,7 @@ const Home = () => {
     },
   ];
 
-  const { baseUrl, token } = useContext(RaterContext);
+  const { baseUrl, token, user } = useContext(RaterContext);
 
   const mytoken = localStorage.getItem("token");
 
@@ -609,7 +609,7 @@ const Home = () => {
         ) : (
           <div>
             <div className="text-[28px] font-semibold text-[black] px-3">
-              Good Evening Emmanuel,
+              Good Evening {user?.first_name},
             </div>
             <div className="text-[#888888] mt-1 mb-8 font-medium text-sm px-3">
               Always remember you are a star, and you would always be!

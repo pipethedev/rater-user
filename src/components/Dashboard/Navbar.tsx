@@ -5,12 +5,14 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { MdOutlineMessage } from "react-icons/md";
 import { HiOutlineUser } from "react-icons/hi";
 import { BiCog } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { ImSoundcloud } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
   const navLinks = [
     {
       name: "home",
@@ -73,22 +75,13 @@ const Navbar = (props) => {
             fill="#3B71F7"
           />
         </svg>{" "}
-        <svg
-          width="48"
-          height="48"
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="24" cy="24" r="24" fill="#F5F8FF" />
-          <path
-            d="M26.9997 31C26.9997 32.6569 25.6566 34 23.9997 34C22.3429 34 20.9997 32.6569 20.9997 31M25.7962 18.2386C26.2317 17.7886 26.4997 17.1756 26.4997 16.5C26.4997 15.1193 25.3804 14 23.9997 14C22.619 14 21.4997 15.1193 21.4997 16.5C21.4997 17.1756 21.7677 17.7886 22.2032 18.2386M29.9997 23.2C29.9997 21.8209 29.3676 20.4982 28.2424 19.523C27.1171 18.5479 25.591 18 23.9997 18C22.4084 18 20.8823 18.5479 19.7571 19.523C18.6319 20.4982 17.9997 21.8209 17.9997 23.2C17.9997 25.4818 17.4339 27.1506 16.7278 28.3447C15.9231 29.7056 15.5207 30.3861 15.5366 30.5486C15.5548 30.7346 15.5882 30.7933 15.7391 30.9036C15.8709 31 16.5332 31 17.8579 31H30.1415C31.4662 31 32.1286 31 32.2604 30.9036C32.4112 30.7933 32.4447 30.7346 32.4629 30.5486C32.4787 30.3861 32.0764 29.7056 31.2717 28.3447C30.5656 27.1506 29.9997 25.4818 29.9997 23.2Z"
-            stroke="#02123B"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <FiLogOut
+          className="cursor-pointer text-2xl text-[#3B71F7]"
+          onClick={() => {
+            localStorage.clear();
+            navigate("/");
+          }}
+        />
       </div>
       <section className="flex flex-col gap-2">
         {navLinks.map((link, key) => {
