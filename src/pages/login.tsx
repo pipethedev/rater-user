@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import LoginImage from "../assets/login.svg";
 import InputContainer from "../components/InputContainer";
-import countries from "../countries.json";
 import { useNavigate } from "react-router-dom";
 import { RaterContext } from "../App";
 import Axios from "axios";
@@ -94,18 +93,27 @@ const Login = () => {
               onChange={(e) => setpassword(e.target.value)}
             />
           </div>
-          <div className="full flex gap-3">
-            <input
-              type="checkbox"
-              name=""
-              id="remember"
-              className="w-[22px] h-[22px]"
-            />
-            <label htmlFor="remember" className="font-medium text-sm">
-              Keep me signed in
-            </label>
+          <div className="flex w-full justify-between">
+            <div className="full flex gap-3">
+              <input
+                type="checkbox"
+                name=""
+                id="remember"
+                className="w-[22px] h-[22px]"
+              />
+              <label htmlFor="remember" className="font-medium text-sm">
+                Keep me signed in
+              </label>
+            </div>
+            <div
+              className="text-[#3B71F7] font-semibold underline cursor-pointer"
+              onClick={() => navigate("/forgotpassword")}
+            >
+              Forgot Password?
+            </div>
           </div>
-          <section className="w-full mt-12">
+
+          <section className="w-full mt-8">
             <button
               className={`text-base font-semibold text-[white] flex justify-center items-center rounded-[64px] h-[56px] w-[228px] ${
                 loading ? "bg-[#bdcdf3]" : "bg-[#3B71F7] cursor-pointer"

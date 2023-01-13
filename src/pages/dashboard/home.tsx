@@ -3,10 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { RaterContext } from "../../App";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
+import { BsDownload } from "react-icons/bs";
 
 const Home = () => {
   const navigate = useNavigate();
   const songsAvail = false;
+
+  const [transactions, settransactions] = useState<any>();
 
   const svgDollar = () => {
     return (
@@ -111,189 +114,6 @@ const Home = () => {
     );
   };
 
-  const transactions = [
-    {
-      date: "12 / 12 / 2022",
-      description: "Sound Upload — I_don_manya.mp3",
-      amount: "₦3,500.00",
-      action: () => {
-        return (
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="14" cy="14" r="14" fill="#F5F8FF" />
-            <path
-              d="M18.5 15.5V17.5C18.5 17.7652 18.3946 18.0196 18.2071 18.2071C18.0196 18.3946 17.7652 18.5 17.5 18.5H10.5C10.2348 18.5 9.98043 18.3946 9.79289 18.2071C9.60536 18.0196 9.5 17.7652 9.5 17.5V15.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.5 13L14 15.5L16.5 13"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 15.5V9.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        );
-      },
-    },
-    {
-      date: "12 / 12 / 2022",
-      description: "Sound Upload — I_go_love_-_david_ft_seun.mp3",
-      amount: "₦3,500.00",
-      action: () => {
-        return (
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="14" cy="14" r="14" fill="#F5F8FF" />
-            <path
-              d="M18.5 15.5V17.5C18.5 17.7652 18.3946 18.0196 18.2071 18.2071C18.0196 18.3946 17.7652 18.5 17.5 18.5H10.5C10.2348 18.5 9.98043 18.3946 9.79289 18.2071C9.60536 18.0196 9.5 17.7652 9.5 17.5V15.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.5 13L14 15.5L16.5 13"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 15.5V9.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        );
-      },
-    },
-    {
-      date: "12 / 12 / 2022",
-      description: "Pro Plan , Monthly — March",
-      amount: "₦3,500.00",
-      action: () => {
-        return (
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="14" cy="14" r="14" fill="#F5F8FF" />
-            <path
-              d="M18.5 15.5V17.5C18.5 17.7652 18.3946 18.0196 18.2071 18.2071C18.0196 18.3946 17.7652 18.5 17.5 18.5H10.5C10.2348 18.5 9.98043 18.3946 9.79289 18.2071C9.60536 18.0196 9.5 17.7652 9.5 17.5V15.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.5 13L14 15.5L16.5 13"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 15.5V9.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        );
-      },
-    },
-    {
-      date: "12 / 12 / 2022",
-      description: "Pro Plan , Monthly — February",
-      amount: "₦3,500.00",
-      action: () => {
-        return (
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="14" cy="14" r="14" fill="#F5F8FF" />
-            <path
-              d="M18.5 15.5V17.5C18.5 17.7652 18.3946 18.0196 18.2071 18.2071C18.0196 18.3946 17.7652 18.5 17.5 18.5H10.5C10.2348 18.5 9.98043 18.3946 9.79289 18.2071C9.60536 18.0196 9.5 17.7652 9.5 17.5V15.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.5 13L14 15.5L16.5 13"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 15.5V9.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        );
-      },
-    },
-    {
-      date: "12 / 12 / 2022",
-      description: "Sound Upload — I_don_manya.mp3",
-      amount: "₦3,500.00",
-      action: () => {
-        return (
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="14" cy="14" r="14" fill="#F5F8FF" />
-            <path
-              d="M18.5 15.5V17.5C18.5 17.7652 18.3946 18.0196 18.2071 18.2071C18.0196 18.3946 17.7652 18.5 17.5 18.5H10.5C10.2348 18.5 9.98043 18.3946 9.79289 18.2071C9.60536 18.0196 9.5 17.7652 9.5 17.5V15.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M11.5 13L14 15.5L16.5 13"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 15.5V9.5"
-              stroke="#7378DE"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        );
-      },
-    },
-  ];
-
   const { baseUrl, token, user } = useContext(RaterContext);
 
   const mytoken = localStorage.getItem("token");
@@ -319,8 +139,21 @@ const Home = () => {
       })
 
       .catch((err) => console.log(err));
+
+    Axios.get(`${baseUrl}api/v1/transactions/my-transactions`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        settransactions(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
   }, []);
 
+  console.log(transactions);
   return (
     <div>
       <DashboardLayout>
@@ -679,7 +512,10 @@ const Home = () => {
               <div className="text-lg font-medium pt-8 pb-4">
                 Recently Transaction
               </div>
-              <div className="text-[#3B71F7] text-base font-semibold flex items-center">
+              <div
+                className="text-[#3B71F7] text-base font-semibold flex items-center cursor-pointer"
+                onClick={() => navigate("/dashboard/transaction")}
+              >
                 View more
                 <svg
                   width="56"
@@ -696,40 +532,50 @@ const Home = () => {
                 </svg>
               </div>
             </div>
-            <div className="flex w-full h-[64px] bg-[#F5F8FF] items-center gap-1">
-              <div className="w-[15%] max-md:[20%] text-[#0F1141] font-semibold text-sm pl-2">
-                DATE
+            <section className="w-full">
+              <div className="w-full flex h-[64px] bg-[#F5F8FF] items-center mt-10 max-md:gap-1">
+                <div className="w-[17%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  DATE
+                </div>
+                <div className="w-[20%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  STATUS
+                </div>
+                <div className="w-[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  AMOUNT
+                </div>
+                <div className="w-[42%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  REFERENCE
+                </div>
+                <div className="w-[10%] max-md:w[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                  ACTION
+                </div>
               </div>
-              <div className="w-[40%] max-md:w-[45%] text-[#0F1141] font-semibold text-sm pl-2">
-                DESCRIPTION
+
+              <div className="flex flex-col w-full max-md:gap-1">
+                {transactions?.slice(0, 2).map((transaction) => {
+                  const myDate = new Date(transaction.created_at);
+                  return (
+                    <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
+                      <div className="w-[17%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {`${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`}
+                      </div>
+                      <div className="w-[20%] pl-2 max-md:w-[30%] text-[#24dd87] font-semibold text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {transaction.payment_status}
+                      </div>
+                      <div className="w-[12%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {transaction.amount}
+                      </div>{" "}
+                      <div className="w-[42%] pl-2 max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                        {transaction.pricing_id}
+                      </div>
+                      <div className="w-[10%] pl-2 text-lg flex px-4 justify-end flex-wrap text-[#3B71F7]">
+                        <BsDownload />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <div className="w-[30%] max-md:[20%] text-[#0F1141] font-semibold text-sm pl-2">
-                AMOUNT
-              </div>
-              <div className="w-[15%] text-[#0F1141] font-semibold text-sm pl-2  flex px-4 justify-end">
-                ACTION
-              </div>
-            </div>
-            <div className="flex flex-col w-full">
-              {transactions.map((transaction) => {
-                return (
-                  <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
-                    <div className="w-[15%] max-md:[20%] text-[#666666] text-sm max-md:text-xs">
-                      {transaction.date}
-                    </div>
-                    <div className="w-[40%] max-md:w-[45%] text-[#666666] text-sm max-md:text-xs">
-                      {transaction.description}
-                    </div>
-                    <div className="w-[30%] max-md:[20%] text-[#666666] text-sm max-md:text-xs">
-                      {transaction.amount}
-                    </div>
-                    <div className="w-[15%] text-[#666666] text-sm flex px-4 justify-end ">
-                      {transaction.action()}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            </section>
           </div>
         )}
       </DashboardLayout>

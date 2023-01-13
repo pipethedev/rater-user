@@ -26,7 +26,6 @@ const Library = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         setmyMusic(res.data.data);
       })
 
@@ -91,6 +90,7 @@ const Library = () => {
   // }, 3000);
 
   if (myMusic) {
+    console.log(myMusic);
     return (
       <div>
         <DashboardLayout>
@@ -169,7 +169,7 @@ const Library = () => {
                         <div
                           className="w-[244px] max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
                           onClick={() => {
-                            navigate(`/dashboard/${music.id}`);
+                            navigate(`/${music.id}`);
                           }}
                         >
                           {musicSvg()}
@@ -180,17 +180,17 @@ const Library = () => {
                             {/* <div className="font-medium text-[#666666] text-sm max-sm:text-[12px]">
                               {music.playTime}
                             </div> */}
-                            {music.rating == "Good" ? (
+                            {music.ratings[0]?.rating == "Good" ? (
                               <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music.ratings[0]?.rating}
                               </div>
-                            ) : music.rating == "Average" ? (
+                            ) : music.ratings[0]?.rating == "Fair" ? (
                               <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music.ratings[0]?.rating}
                               </div>
-                            ) : music.rating == "Bad" ? (
+                            ) : music.ratings[0]?.rating == "Bad" ? (
                               <div className="text-[#e94444] font-semibold text-base max-md:text-sm bg-[#ffc107] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music.ratings[0]?.rating}
                               </div>
                             ) : (
                               <div className="font-bold text-sm text-[#3a00c2]">
@@ -234,7 +234,15 @@ const Library = () => {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+          {" "}
+          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        </div>
+        <br />
+      </div>
+    );
   }
 };
 

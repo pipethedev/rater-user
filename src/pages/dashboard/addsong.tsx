@@ -47,36 +47,37 @@ const addsong = () => {
   };
 
   const handleUpload = async (e) => {
-    e.preventDefault();
-    console.log(audioFile);
+    if (audioFile) {
+      e.preventDefault();
+      console.log(audioFile);
 
-    // let formData = new FormData();
-    // let uploadFile: any = audioFile;
+      const formData = new FormData();
 
-    // formData.append("audio", uploadFile);
-    // formData.append("title", title);
-    // formData.append("payment_reference", "SAMOTESTREFERENCE123");
+      formData.append("myAudio", audioFile);
+      // formData.append("title", title);
+      // formData.append("payment_reference", ref);
 
-    await Axios({
-      url: `${baseUrl}api/v1/song/upload`,
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${mytoken}`,
-      },
-      data: {
-        audio: audioFile,
-        title: title,
-        payment_reference: ref,
-      },
-    })
-      .then((res) => {
-        console.log(res);
+      for (var key of formData.entries()) {
+        console.log(key[1]);
+      }
+
+      Axios({
+        url: `${baseUrl}api/v1/song/upload`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${mytoken}`,
+        },
+        data: formData,
       })
+        .then((res) => {
+          console.log(res);
+        })
 
-      .catch((err) => console.log(err));
+        .catch((err) => console.log(err));
+    }
   };
   const navigate = useNavigate();
-  const [steps, setsteps] = useState(1);
+  const [steps, setsteps] = useState(2);
 
   const mytoken = localStorage.getItem("token");
 

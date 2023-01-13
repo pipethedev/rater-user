@@ -142,7 +142,15 @@ const Transaction = () => {
       </DashboardLayout>
     );
   } else {
-    <h1 className="text-[red]">Loading</h1>;
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+          {" "}
+          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        </div>
+        <br />
+      </div>
+    );
   }
 };
 

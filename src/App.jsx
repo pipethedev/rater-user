@@ -13,6 +13,7 @@ import { MdSingleBed } from "react-icons/md";
 import SingleMusic from "./pages/dashboard/singleMusic";
 import AddSong from "./pages/dashboard/addsong";
 import Axios from "axios";
+import Forgotpassword from "./pages/forgotpassword";
 
 export const RaterContext = createContext();
 
@@ -44,6 +45,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Login />} />{" "}
             <Route path="/signup" element={<Signup />} />{" "}
+            <Route path="/forgotpassword" element={<Forgotpassword />} />{" "}
           </Routes>
 
           {/* DASHBOARD PAGES */}
@@ -51,7 +53,7 @@ const App = () => {
             <Route path="/dashboard/home" element={<Home />} />
             <Route path="/dashboard/library" element={<Library />} />
             <Route path="/dashboard/sound" element={<AddSong />} />
-            <Route path="/dashboard/:songName" element={<SingleMusic />} />
+            <Route path="/:id" element={<SingleMusic />} />
             <Route path="/dashboard/transaction" element={<Transaction />} />
             <Route path="/dashboard/feedback" element={<Feedback />} />
             <Route path="/dashboard/profile" element={<Profile />} />
