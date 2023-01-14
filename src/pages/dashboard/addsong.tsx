@@ -9,6 +9,7 @@ import { Toaster, toast } from "react-hot-toast";
 import swal from "sweetalert";
 
 const addsong = () => {
+  const payStackKey = import.meta.env.VITE_PAYSTACK_KEY;
   const [payLoader, setpayLoader] = useState(false);
   const [price, setprice] = useState<any>();
   const formatKoboAmountForDisplay = (amount: number): string => {
@@ -39,7 +40,7 @@ const addsong = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const [steps, setsteps] = useState<number>();
+  const [steps, setsteps] = useState<number>(1);
   useEffect(() => {
     if (paymentReference) {
       console.log("ref avail");
@@ -78,14 +79,15 @@ const addsong = () => {
     reference: new Date().getTime().toString(),
     email: `${user?.email}`,
     amount: price, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-    publicKey: "pk_test_1e869f96d5b66facc9aae0f6f0334b3a99ce8995",
+    publicKey: payStackKey,
   };
 
   const handlePaystackSuccessAction = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
     ref = reference.reference;
-    location.reload();
+    // location.reload();
+    setsteps(2);
   };
 
   // you can call this function anything
