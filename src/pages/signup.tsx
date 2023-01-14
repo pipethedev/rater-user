@@ -31,6 +31,7 @@ const Signup = () => {
   const [email, setemail] = useState<string>();
   const [password, setpassword] = useState<string>();
   const [mobileNo, setmobileNo] = useState<string>();
+  const [loading, setloading] = useState(false);
 
   function getFlagEmoji(countryCode) {
     const codePoints = countryCode
@@ -40,8 +41,8 @@ const Signup = () => {
     return String.fromCodePoint(...codePoints);
   }
 
-  const [timer, settimer] = useState(3);
   const handleSignUp = async () => {
+    setloading(true);
     if (firstname && lastName && email && password && mobileNo) {
       await Axios.post(`${baseUrl}api/v1/auth/register`, {
         first_name: firstname,
@@ -53,8 +54,8 @@ const Signup = () => {
         .then((res) => {
           console.log(res.data.message);
 
-          toast.success(`Successful! Redirecting in ${timer}!`);
-          setInterval(() => settimer(timer - 1), 1000);
+          toast.success(`Successful! Redirecting to Login!`);
+          setloading(false);
           setTimeout(() => {
             navigate("/");
           }, 3000);
@@ -62,16 +63,18 @@ const Signup = () => {
         .catch((err) => {
           console.log(err);
           toast.error("Unable to signup.");
+          setloading(false);
         });
     } else {
       toast.error("Please fill all the fields.");
+      setloading(false);
     }
   };
 
   return (
     <div>
       <div className="w-screen h-screen p-0 m-0 overflow-x-hidden flex">
-        <Toaster position="top-left" reverseOrder={true} />
+        <Toaster position="top-right" reverseOrder={true} />
         <section className="bg-[#3B71F7] w-[60%] h-full relative max-md:hidden">
           <img
             src={SignupImage}
@@ -79,7 +82,13 @@ const Signup = () => {
             className="absolute right-0 top-0 h-[100%]"
           />
         </section>
-        <section className="w-[40%] max-md:w-full px-10 py-16 gap-5 flex flex-col">
+        <section className="w-[40%] max-md:w-full px-10 py-16 gap-5 flex flex-col relative">
+          {loading ? (
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+              {" "}
+              <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+            </div>
+          ) : null}
           <section>
             <div className="font-medium text-base text-[#02123B]">
               Hi there Super Star
