@@ -178,7 +178,7 @@ const Library = () => {
                         <div
                           className="cursor-pointer w-[244px] max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
                           onClick={() => {
-                            navigate(`/${music.id}`);
+                            navigate(`/dashboard/${music.id}`);
                           }}
                         >
                           {musicSvg()}

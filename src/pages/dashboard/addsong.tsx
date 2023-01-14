@@ -6,6 +6,7 @@ import { RaterContext } from "../../App";
 import Axios from "axios";
 import { PaystackButton } from "react-paystack";
 import { Toaster, toast } from "react-hot-toast";
+import swal from "sweetalert";
 
 const addsong = () => {
   const [payLoaader, setpayLoaader] = useState(false);
@@ -24,8 +25,7 @@ const addsong = () => {
   // const [ref, setref] = useState<any>();
   const mytoken = localStorage.getItem("token");
 
-  // const [steps, setsteps] = useState(step);
-  let steps;
+  // let steps;
   let ref;
   useEffect(() => {
     Axios({
@@ -37,27 +37,41 @@ const addsong = () => {
       })
 
       .catch((err) => console.log(err));
-
-    console.log(paymentReference);
   }, []);
+
+  const [steps, setsteps] = useState<number>();
+  useEffect(() => {
+    if (paymentReference) {
+      console.log("ref avail");
+      if (paymentReference[0]) {
+        console.log("first ref avail");
+        if (!paymentReference[0]?.used) {
+          console.log("MOVE TO SECOND STAGE");
+          console.log(paymentReference);
+          setsteps(2);
+          swal({
+            text: "Continue unfinished transaction!",
+          });
+        } else {
+          console.log("SHOULD MOVE TO FIRST STAGE");
+          setsteps(1);
+        }
+      } else {
+        ("empty REFERENCE");
+        setsteps(1);
+      }
+    }
+  }, [paymentReference]);
+
+  console.log(steps);
   if (paymentReference) {
-    console.log("REF IS AVAILABLE");
-    if (!paymentReference[0].used) {
-      console.log(!paymentReference[0].used);
-      steps = 2;
+    if (paymentReference.length > 0) {
+      if (!paymentReference[0].used) {
+        ref = paymentReference[0].reference;
+      }
     } else {
-      steps = 1;
+      console.log("CANT FIND REF");
     }
-  } else {
-    steps = 1;
-    console.log("CANT FIND REF");
-  }
-  if (paymentReference) {
-    if (!paymentReference[0].used) {
-      ref = paymentReference[0].reference;
-    }
-  } else {
-    console.log("CANT FIND REF");
   }
 
   const config = {
@@ -71,7 +85,6 @@ const addsong = () => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
     ref = reference.reference;
-    steps = 2;
     location.reload();
   };
 
@@ -188,9 +201,9 @@ const addsong = () => {
             <path
               d="M1.25 8.5L4.75 5L1.25 1.5"
               stroke="#FFC94C"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div
@@ -209,9 +222,9 @@ const addsong = () => {
             <path
               d="M1.25 8.5L4.75 5L1.25 1.5"
               stroke="#FFC94C"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div className="text-[#3B71F7] font-semibold text-sm">Add Music</div>
@@ -289,9 +302,9 @@ const addsong = () => {
                 </>
               ) : (
                 <>
-                  <div className="w-full flex flex-col items-center gap-4">
+                  <div className="w-full flex flex-col items-center gap-4 relative">
                     {payLoaader ? (
-                      <div className="w-full h-screen flex justify-center items-center">
+                      <div className="w-full h-full flex justify-center items-full">
                         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
                           {" "}
                           <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
@@ -331,7 +344,7 @@ const addsong = () => {
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
-                          <g clip-path="url(#clip0_154_2416)">
+                          <g clipPath="url(#clip0_154_2416)">
                             <path
                               d="M54.669 5.25H17.334C16.7372 5.25 16.165 5.01295 15.743 4.59099C15.321 4.16903 15.084 3.59674 15.084 3C15.084 2.40326 15.321 1.83097 15.743 1.40901C16.165 0.987053 16.7372 0.75 17.334 0.75H54.669C55.2657 0.75 55.838 0.987053 56.26 1.40901C56.6819 1.83097 56.919 2.40326 56.919 3C56.919 3.59674 56.6819 4.16903 56.26 4.59099C55.838 5.01295 55.2657 5.25 54.669 5.25Z"
                               fill="#3B71F7"
@@ -373,7 +386,7 @@ const addsong = () => {
                   <button
                     onClick={(e) => handleUpload(e)}
                     className={`rounded-[64px] w-full h-[56px] flex justify-center mt-8 items-center font-semibold text-[white] cursor-pointer ${
-                      payLoaader ? "bg-[#c9d0e2]" : "bg-[#3b71f7] "
+                      payLoaader ? "bg-[#c9d0e2] h-[56px]" : "bg-[#3b71f7] "
                     }`}
                     disabled={payLoaader}
                   >

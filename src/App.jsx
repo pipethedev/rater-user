@@ -47,7 +47,7 @@ const App = () => {
       })
 
       .catch((err) => console.log(err));
-  }, []);
+  }, [token]);
 
   return (
     <RaterContext.Provider
@@ -67,7 +67,7 @@ const App = () => {
             <Route path="/dashboard/home" element={<Home />} />
             <Route path="/dashboard/library" element={<Library />} />
             <Route path="/dashboard/sound" element={<AddSong />} />
-            <Route path="/:id" element={<SingleMusic />} />
+            <Route path="/dashboard/:id" element={<SingleMusic />} />
             <Route path="/dashboard/transaction" element={<Transaction />} />
             <Route path="/dashboard/feedback" element={<Feedback />} />
             <Route path="/dashboard/profile" element={<Profile />} />

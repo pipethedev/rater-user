@@ -35,12 +35,12 @@ const Forgotpassword = () => {
     <>
       <Toaster position="top-left" reverseOrder={true} />
       <PopUpLayout>
-        {loading ? (
+        {loading && (
           <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
             {" "}
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
           </div>
-        ) : null}
+        )}
         <div className="mb-4 text-base font-semibold text-[#888888] text-center">
           Enter your email and we will send a link to help you get back to your
           account!

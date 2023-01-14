@@ -4,6 +4,7 @@ export type Input = {
   labelText: string;
   type: string;
   onChange?: any;
+  value?: any;
 };
 
 const InputContainer = (Input: Input) => {
@@ -20,6 +21,7 @@ const InputContainer = (Input: Input) => {
         type={Input.type}
         className={`focus:border-[#3B71F7] border-[1px] border-[#CCCCCC] rounded-[64px] h-[54px] max-md:h-[48px] p-4 w-full outline-none font-medium text-[#261C40] text-base`}
         onChange={Input.onChange}
+        value={Input.value}
       />
     </div>
   );
