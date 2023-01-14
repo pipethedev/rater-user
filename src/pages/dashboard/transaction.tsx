@@ -4,13 +4,16 @@ import { useNavigate } from "react-router";
 import { RaterContext } from "../../App";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
 import { BsDownload } from "react-icons/bs";
+import { IoCopyOutline } from "react-icons/io5";
 
 const Transaction = () => {
   const navigate = useNavigate();
   const [transactions, settransactions] = useState<any>();
-  const { baseUrl, token } = useContext(RaterContext);
+  const { baseUrl, token, paymentReference } = useContext(RaterContext);
 
   const mytoken = localStorage.getItem("token");
+
+  const [showRef, setshowRef] = useState(false);
 
   useEffect(() => {
     if (mytoken == null) {
@@ -44,16 +47,20 @@ const Transaction = () => {
           <div className="flex flex-col justify-between h-full max-sm:w-full">
             {" "}
             <div className="text-[28px] font-semibold text-[black] px-3">
-              Transactions
+              {showRef ? "References" : "Transactions"}
             </div>
             <div className="text-[#888888] font-medium text-sm px-3">
-              All Transactions you’ve made on the platform
+              All {showRef ? "References" : "Transactions"} you’ve made on the
+              platform
             </div>
           </div>
-          <div className="flex w-full justify-start max-sm:mt-2">
+          <div className="flex max-sm:w-full justify-start max-sm:mt-2">
             {" "}
-            <div className="bg-[#3B71F7]  max-sm:px-5 text-center max-md:text-sm max-sm:py-2 px-8 py-3 text-[white] font-semibold cursor-pointer rounded-[58px]">
-              Show References
+            <div
+              className="bg-[#3B71F7]  max-sm:px-5 text-center max-md:text-sm max-sm:py-2 px-8 py-3 text-[white] font-semibold cursor-pointer rounded-[58px]"
+              onClick={() => setshowRef(!showRef)}
+            >
+              Show {showRef ? "Transactions" : "References"}
             </div>
           </div>
         </div>
@@ -80,7 +87,7 @@ const Transaction = () => {
             />
           </svg>
           <div className="text-[#3B71F7] font-semibold text-sm">
-            Transaction
+            {showRef ? "References" : "Transactions"}
           </div>
         </div>
         {transactions.length == 0 ? (
@@ -93,7 +100,7 @@ const Transaction = () => {
               platform
             </div>
           </section>
-        ) : (
+        ) : transactions.length > 0 && !showRef ? (
           <div>
             <div className="text-[20px] text-[black] font-semibold my-4">
               All Transactions - {transactions.length}
@@ -124,11 +131,8 @@ const Transaction = () => {
                 <div className="w-[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
                   AMOUNT
                 </div>
-                <div className="w-[42%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
+                <div className="w-[52%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
                   REFERENCE
-                </div>
-                <div className="w-[10%] max-md:w[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                  ACTION
                 </div>
               </div>
 
@@ -146,11 +150,8 @@ const Transaction = () => {
                       <div className="w-[12%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
                         {transaction.amount}
                       </div>{" "}
-                      <div className="w-[42%] pl-2 max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                      <div className="w-[52%] pl-2 truncate max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
                         {transaction.pricing_id}
-                      </div>
-                      <div className="w-[10%] pl-2 text-lg flex px-4 justify-end flex-wrap text-[#3B71F7]">
-                        <BsDownload />
                       </div>
                     </div>
                   );
@@ -158,7 +159,58 @@ const Transaction = () => {
               </div>
             </section>
           </div>
-        )}
+        ) : paymentReference.length > 0 && showRef ? (
+          <div>
+            <div className="text-[20px] text-[black] font-semibold my-4">
+              All References - {paymentReference.length}
+            </div>{" "}
+            <section className="w-full">
+              <div className="w-full flex h-[64px] bg-[#F5F8FF] items-center mt-10 max-md:gap-1">
+                <div className="w-[20%] text-[#0F1141] font-semibold text-sm max-md:text-[11px] max-sm:font-medium">
+                  DATE
+                </div>
+                <div className="w-[20%] text-[#0F1141] font-semibold text-sm max-md:text-[11px] max-sm:font-medium">
+                  USABLE
+                </div>
+                <div className="w-[50%] text-[#0F1141] font-semibold text-sm max-md:text-[11px] max-sm:font-medium">
+                  REFERENCE
+                </div>
+                <div className="w-[10%] text-[#0F1141] font-semibold text-sm max-md:text-[11px] max-sm:font-medium">
+                  COPY
+                </div>
+              </div>
+              {paymentReference?.map((ref) => {
+                const copy = (text: string) =>
+                  navigator.clipboard.writeText(text);
+                const copyLink = () => {
+                  copy(`${ref.reference}`);
+                  alert(`${ref.reference} copied to clipboard`);
+                };
+                const myDate = new Date(ref.created_at);
+                return (
+                  <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
+                    <div className="w-[20%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                      {`${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`}
+                    </div>
+                    <div
+                      className={`w-[20%] max-md:w-[30%] font-semibold text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap ${
+                        ref.used ? "text-[#eb473b]" : "text-[#24dd87]"
+                      }`}
+                    >
+                      {ref.used ? "No" : "Yes"}
+                    </div>
+                    <div className="w-[50%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
+                      {ref.reference}
+                    </div>{" "}
+                    <div className="w-[10%] text-lg flex px-4 flex-wrap text-[#3B71F7]">
+                      <IoCopyOutline onClick={copyLink} />
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
+          </div>
+        ) : null}
       </DashboardLayout>
     );
   } else {

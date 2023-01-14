@@ -24,6 +24,7 @@ const App = () => {
   const [token, settoken] = useState();
   const [user, setuser] = useState();
   const mytoken = localStorage.getItem("token");
+  const [paymentReference, setpaymentReference] = useState();
   useEffect(() => {
     Axios.get(`${baseUrl}api/v1/user/profile`, {
       headers: {
@@ -35,10 +36,24 @@ const App = () => {
       })
 
       .catch((err) => console.log(err));
+
+    Axios.get(`${baseUrl}api/v1/payment-references`, {
+      headers: {
+        Authorization: `Bearer ${mytoken}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setpaymentReference(res.data.data);
+      })
+
+      .catch((err) => console.log(err));
   }, []);
 
   return (
-    <RaterContext.Provider value={{ baseUrl, settoken, token, user }}>
+    <RaterContext.Provider
+      value={{ baseUrl, settoken, token, user, paymentReference }}
+    >
       <div className="font-grotesk">
         <Router>
           {/* AUTH PAGES  */}
