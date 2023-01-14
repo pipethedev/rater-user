@@ -8,6 +8,12 @@ import { BsDownload } from "react-icons/bs";
 import { FcSearch } from "react-icons/fc";
 
 const Home = () => {
+  const formatKoboAmountForDisplay = (amount: number): string => {
+    return new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: "NGN",
+    }).format(amount / 100);
+  };
   const navigate = useNavigate();
   const songsAvail = false;
 
@@ -489,7 +495,9 @@ const Home = () => {
                   {svgDollar()}
                   <div className="flex flex-col">
                     <div className="font-bold text-[32px] flex text-[black]">
-                      ₦{stats?.payments}
+                      {formatKoboAmountForDisplay(
+                        Number(`${stats?.payments}00`)
+                      )}
                     </div>
                     <div className="text-[#888888] font-medium text-base">
                       Total payments made
@@ -524,7 +532,7 @@ const Home = () => {
               {/* RECENT MUSICS  */}
               {myMusic?.slice(0, 4).length > 0 ? (
                 <section className="gap-2 max-md:gap-4 mt-8 flex flex-wrap justify-around">
-                  {myMusic?.map((music) => {
+                  {myMusic?.slice(0, 4).map((music) => {
                     return (
                       <div
                         className="cursor-pointer max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"

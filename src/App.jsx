@@ -43,7 +43,6 @@ const App = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         setpaymentReference(res.data.data);
       })
 
