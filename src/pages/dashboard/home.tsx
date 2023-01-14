@@ -523,11 +523,11 @@ const Home = () => {
               </div>
               {/* RECENT MUSICS  */}
               {myMusic?.slice(0, 4).length > 0 ? (
-                <section className="gap-2 max-md:gap-4 mt-8 flex flex-wrap">
+                <section className="gap-2 max-md:gap-4 mt-8 flex flex-wrap justify-around">
                   {myMusic?.map((music) => {
                     return (
                       <div
-                        className="w-[244px] max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
+                        className="cursor-pointer max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
                         onClick={() => {
                           navigate(`/${music.id}`);
                         }}
@@ -615,7 +615,7 @@ const Home = () => {
                   {transactions?.slice(0, 2).map((transaction) => {
                     const myDate = new Date(transaction.created_at);
                     return (
-                      <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
+                      <div className="cursor-pointer flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
                         <div className="w-[17%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
                           {`${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`}
                         </div>

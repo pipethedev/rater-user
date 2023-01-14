@@ -30,14 +30,32 @@ const Transaction = () => {
 
       .catch((err) => console.log(err));
   }, []);
+
+  //search
+  const [search, setsearch] = useState<string>("");
+  const filteredtransaction = transactions?.filter((tran) =>
+    tran?.pricing_id.toLowerCase().includes(search?.toLowerCase())
+  );
+
   if (transactions) {
     return (
       <DashboardLayout>
-        <div className="text-[28px] font-semibold text-[black] px-3">
-          Transactions
-        </div>
-        <div className="text-[#888888] mt-1 mb-8 font-medium text-sm px-3">
-          All Transactions you’ve made on the platform
+        <div className="flex w-full items-center justify-between mb-4 max-sm:flex-col">
+          <div className="flex flex-col justify-between h-full max-sm:w-full">
+            {" "}
+            <div className="text-[28px] font-semibold text-[black] px-3">
+              Transactions
+            </div>
+            <div className="text-[#888888] font-medium text-sm px-3">
+              All Transactions you’ve made on the platform
+            </div>
+          </div>
+          <div className="flex w-full justify-start max-sm:mt-2">
+            {" "}
+            <div className="bg-[#3B71F7]  max-sm:px-5 text-center max-md:text-sm max-sm:py-2 px-8 py-3 text-[white] font-semibold cursor-pointer rounded-[58px]">
+              Show References
+            </div>
+          </div>
         </div>
         <div className="flex gap-2 items-center border-t-[1px] border-b-[1px] border-[#e0dcdc] py-4 w-full">
           <div
@@ -83,6 +101,8 @@ const Transaction = () => {
             <div className="flex items-center w-full justify-between">
               <input
                 type="text"
+                value={search}
+                onChange={(e) => setsearch(e.target.value)}
                 placeholder=" Search through your transactions"
                 className="outline-none border-[0.5px] bg-[#ffffff] border-[#cccccc] p-4 rounded-[64px] w-[400px] max-md:w-[300px] max-sm:w-[150px] h-[50px] text-[#b3b3b3] font-semibold text-sm"
               />
@@ -113,7 +133,7 @@ const Transaction = () => {
               </div>
 
               <div className="flex flex-col w-full max-md:gap-1">
-                {transactions?.map((transaction) => {
+                {filteredtransaction?.map((transaction) => {
                   const myDate = new Date(transaction.created_at);
                   return (
                     <div className="flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">

@@ -89,6 +89,13 @@ const Library = () => {
   //   }
   // }, 3000);
 
+  //Search implemented
+
+  const [searchText, setsearchText] = useState<string>("");
+  const filteredMusic = myMusic?.filter((music) =>
+    music?.title.toLowerCase().includes(searchText?.toLowerCase())
+  );
+
   if (myMusic) {
     console.log(myMusic);
     return (
@@ -148,6 +155,8 @@ const Library = () => {
                   <input
                     type="text"
                     placeholder=" Search for songs on your sound page"
+                    onChange={(e) => setsearchText(e.target.value)}
+                    value={searchText}
                     className="outline-none border-[0.5px] bg-[#ffffff] border-[#cccccc] p-4 rounded-[64px] w-[400px] max-md:w-[300px] max-sm:w-[150px] h-[50px] text-[#b3b3b3] font-semibold text-sm"
                   />
                   <section className="flex gap-4 items-center">
@@ -164,10 +173,10 @@ const Library = () => {
                 </div>
                 {myMusic.length > 0 ? (
                   <section className="gap-2 max-md:gap-4 mt-8 flex flex-wrap">
-                    {myMusic?.map((music) => {
+                    {filteredMusic?.map((music) => {
                       return (
                         <div
-                          className="w-[244px] max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
+                          className="cursor-pointer w-[244px] max-md:w-full gap-4 max-md:gap-6 max-md:items-start my-4 flex flex-col max-md:flex-row max-md:border-b-[1px] max-md:border-[#ebe7e7] pb-2"
                           onClick={() => {
                             navigate(`/${music.id}`);
                           }}

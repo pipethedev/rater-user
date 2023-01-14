@@ -8,16 +8,11 @@ import { PaystackButton } from "react-paystack";
 
 const addsong = () => {
   const form = new FormData();
-  const [audio, setaudio] = useState();
   const [title, settitle] = useState<any>();
   const { baseUrl, user } = useContext(RaterContext);
   const [fileName, setfileName] = useState("No file selected");
   const [audioFile, setaudioFile] = useState();
   const [ref, setref] = useState();
-  function handleChange(e) {
-    setfileName(e.target.files[0].name);
-    setaudioFile(e.target.files[0]);
-  }
 
   const config = {
     reference: new Date().getTime().toString(),
@@ -33,6 +28,7 @@ const addsong = () => {
     setsteps(2);
   };
 
+  console.log(ref);
   // you can call this function anything
   const handlePaystackCloseAction = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
@@ -46,19 +42,23 @@ const addsong = () => {
     onClose: handlePaystackCloseAction,
   };
 
+  function handleChange(e) {
+    setfileName(e.target.files[0].name);
+    setaudioFile(e.target.files[0]);
+  }
+
   const handleUpload = async (e) => {
     if (audioFile) {
       e.preventDefault();
-      console.log(audioFile);
 
       const formData = new FormData();
 
-      formData.append("myAudio", audioFile);
+      // formData.append("myAudio", audioFile);
       // formData.append("title", title);
       // formData.append("payment_reference", ref);
 
       for (var key of formData.entries()) {
-        console.log(key[1]);
+        // console.log(key[1]);
       }
 
       Axios({
@@ -66,8 +66,9 @@ const addsong = () => {
         method: "POST",
         headers: {
           Authorization: `Bearer ${mytoken}`,
+          "Content-Type": "multipart/form-data",
         },
-        data: formData,
+        data: { audio: audioFile, title: title, payment_reference: ref },
       })
         .then((res) => {
           console.log(res);
@@ -77,7 +78,7 @@ const addsong = () => {
     }
   };
   const navigate = useNavigate();
-  const [steps, setsteps] = useState(2);
+  const [steps, setsteps] = useState(1);
 
   const mytoken = localStorage.getItem("token");
 
@@ -162,6 +163,9 @@ const addsong = () => {
                 <div className="font-semibold text-[#02123B]">
                   Upload your song
                 </div>
+              </div>
+              <div className="w-full max-md:w:[300px] text-[#3b71f7] font-bold text-base cursor-pointer underline">
+                Made payment before?
               </div>
             </>
           ) : (
