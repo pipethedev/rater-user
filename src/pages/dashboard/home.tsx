@@ -510,7 +510,7 @@ const Home = () => {
                   Recently Uploaded Sounds
                 </div>
                 <div
-                  className="text-[#3B71F7] text-base font-semibold flex items-center"
+                  className="text-[#3B71F7] text-base font-semibold flex items-center cursor-pointer"
                   onClick={() => navigate("/dashboard/library")}
                 >
                   View more

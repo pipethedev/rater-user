@@ -9,7 +9,7 @@ import { Toaster, toast } from "react-hot-toast";
 import swal from "sweetalert";
 
 const addsong = () => {
-  const [payLoaader, setpayLoaader] = useState(false);
+  const [payLoader, setpayLoader] = useState(false);
   const [price, setprice] = useState<any>();
   const formatKoboAmountForDisplay = (amount: number): string => {
     return new Intl.NumberFormat("en-NG", {
@@ -110,7 +110,7 @@ const addsong = () => {
 
   const handleUpload = async (e) => {
     console.log(ref);
-    setpayLoaader(true);
+    setpayLoader(true);
     if (audioFile && fileName && title) {
       console.log(audioFile);
       console.log(fileName);
@@ -141,17 +141,17 @@ const addsong = () => {
           setTimeout(() => {
             navigate("/dashboard/library");
           }, 3000);
-          setpayLoaader(false);
+          setpayLoader(false);
         })
 
         .catch((err) => {
           console.log(err);
           toast.error("Song Upload Failed");
-          setpayLoaader(false);
+          setpayLoader(false);
         });
     } else {
       toast.error("Please fill all the fields.");
-      setpayLoaader(false);
+      setpayLoader(false);
     }
   };
   const navigate = useNavigate();
@@ -303,7 +303,7 @@ const addsong = () => {
               ) : (
                 <>
                   <div className="w-full flex flex-col items-center gap-4 relative">
-                    {payLoaader ? (
+                    {payLoader ? (
                       <div className="w-full h-full flex justify-center items-full">
                         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
                           {" "}
@@ -386,9 +386,9 @@ const addsong = () => {
                   <button
                     onClick={(e) => handleUpload(e)}
                     className={`rounded-[64px] w-full h-[56px] flex justify-center mt-8 items-center font-semibold text-[white] cursor-pointer ${
-                      payLoaader ? "bg-[#c9d0e2] h-[56px]" : "bg-[#3b71f7] "
+                      payLoader ? "bg-[#c9d0e2] h-[56px]" : "bg-[#3b71f7] "
                     }`}
-                    disabled={payLoaader}
+                    disabled={payLoader}
                   >
                     Upload Song
                   </button>{" "}
