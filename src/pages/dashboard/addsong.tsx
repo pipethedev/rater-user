@@ -20,11 +20,12 @@ const addsong = () => {
   const { baseUrl, user, paymentReference } = useContext(RaterContext);
   const [fileName, setfileName] = useState("No file selected");
   const [audioFile, setaudioFile] = useState();
-  const [ref, setref] = useState<any>();
+  // const [ref, setref] = useState<any>();
   const mytoken = localStorage.getItem("token");
 
   // const [steps, setsteps] = useState(step);
   let steps;
+  let ref;
   useEffect(() => {
     Axios({
       url: `${baseUrl}api/v1/pricing`,
@@ -41,6 +42,13 @@ const addsong = () => {
       ? (steps = 2)
       : (steps = 1);
   }, []);
+  if (paymentReference) {
+    if (!paymentReference[paymentReference.length - 1].used) {
+      ref = paymentReference[paymentReference.length - 1].reference;
+    }
+  } else {
+    console.log("CANT FIND REF");
+  }
 
   const config = {
     reference: new Date().getTime().toString(),
@@ -52,7 +60,7 @@ const addsong = () => {
   const handlePaystackSuccessAction = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
-    setref(reference.reference);
+    ref = reference.reference;
     steps = 2;
   };
 
@@ -74,11 +82,8 @@ const addsong = () => {
     setaudioFile(e.target.files[0]);
   }
 
-  if (paymentReference && paymentReference[paymentReference.length - 1].used) {
-    setref(paymentReference[paymentReference.length - 1].reference);
-  }
-
   const handleUpload = async (e) => {
+    console.log(ref);
     if (audioFile) {
       e.preventDefault();
 
