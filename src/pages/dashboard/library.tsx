@@ -29,7 +29,9 @@ const Library = () => {
         setmyMusic(res.data.data);
       })
 
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        //console.log(err)
+      });
   }, []);
 
   const order = () => {
@@ -97,7 +99,7 @@ const Library = () => {
   );
 
   if (myMusic) {
-    console.log(myMusic);
+    // console.log(myMusic);
     return (
       <div>
         <DashboardLayout>

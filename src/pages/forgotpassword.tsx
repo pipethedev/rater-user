@@ -17,12 +17,12 @@ const Forgotpassword = () => {
         email: email,
       })
         .then((res) => {
-          console.log(res.data.message);
+          // console.log(res.data.message);
           toast.success("Check email for the link!");
           setloading(false);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           toast.error("Unable to send link");
           setloading(false);
         });

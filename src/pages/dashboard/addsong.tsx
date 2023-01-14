@@ -37,24 +37,26 @@ const addsong = () => {
         setprice(res.data.data.price);
       })
 
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err)
+      });
   }, []);
 
   const [steps, setsteps] = useState<number>(1);
   useEffect(() => {
     if (paymentReference) {
-      console.log("ref avail");
+      // console.log("ref avail");
       if (paymentReference[0]) {
-        console.log("first ref avail");
+        // console.log("first ref avail");
         if (!paymentReference[0]?.used) {
-          console.log("MOVE TO SECOND STAGE");
-          console.log(paymentReference);
+          // console.log("MOVE TO SECOND STAGE");
+          // console.log(paymentReference);
           setsteps(2);
           swal({
             text: "Continue unfinished transaction!",
           });
         } else {
-          console.log("SHOULD MOVE TO FIRST STAGE");
+          // console.log("SHOULD MOVE TO FIRST STAGE");
           setsteps(1);
         }
       } else {
@@ -64,14 +66,14 @@ const addsong = () => {
     }
   }, [paymentReference]);
 
-  console.log(steps);
+  // console.log(steps);
   if (paymentReference) {
     if (paymentReference.length > 0) {
       if (!paymentReference[0].used) {
         ref = paymentReference[0].reference;
       }
     } else {
-      console.log("CANT FIND REF");
+      // console.log("CANT FIND REF");
     }
   }
 
@@ -84,7 +86,7 @@ const addsong = () => {
 
   const handlePaystackSuccessAction = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
+    // console.log(reference);
     ref = reference.reference;
     // location.reload();
     setsteps(2);
@@ -93,7 +95,7 @@ const addsong = () => {
   // you can call this function anything
   const handlePaystackCloseAction = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
+    // console.log("closed");
   };
 
   const componentProps = {
@@ -111,11 +113,11 @@ const addsong = () => {
   }
 
   const handleUpload = async (e) => {
-    console.log(ref);
+    // console.log(ref);
     setpayLoader(true);
     if (audioFile && fileName && title) {
-      console.log(audioFile);
-      console.log(fileName);
+      // console.log(audioFile);
+      // console.log(fileName);
       e.preventDefault();
 
       const formData = new FormData();
@@ -138,7 +140,7 @@ const addsong = () => {
         data: formData,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           toast.success("Song successfully uploaded!");
           setTimeout(() => {
             navigate("/dashboard/library");
@@ -147,7 +149,7 @@ const addsong = () => {
         })
 
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           toast.error("Song Upload Failed");
           setpayLoader(false);
         });

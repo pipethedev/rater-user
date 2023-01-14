@@ -37,8 +37,8 @@ const Login = () => {
         password: password,
       })
         .then((res) => {
-          console.log(res.data.message);
-          console.log(res.data.data.token);
+          // console.log(res.data.message);
+          // console.log(res.data.data.token);
           settoken(res.data.data.token);
           if (res.data.message) {
           }
@@ -50,7 +50,7 @@ const Login = () => {
           setloading(false);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           toast.error("Login failed");
           setloading(false);
         });

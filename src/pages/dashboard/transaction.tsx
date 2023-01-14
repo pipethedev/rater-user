@@ -27,11 +27,13 @@ const Transaction = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         settransactions(res.data.data);
       })
 
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err)
+      });
   }, []);
 
   //search

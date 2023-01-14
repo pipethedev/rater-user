@@ -52,7 +52,7 @@ const Signup = () => {
         password: password,
       })
         .then((res) => {
-          console.log(res.data.message);
+          // console.log(res.data.message);
 
           toast.success(`Successful! Redirecting to Login!`);
           setloading(false);
@@ -61,7 +61,7 @@ const Signup = () => {
           }, 3000);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           toast.error("Unable to signup.");
           setloading(false);
         });

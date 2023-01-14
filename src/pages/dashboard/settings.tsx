@@ -41,7 +41,7 @@ const Settings = () => {
   const [newPass, setnewPass] = useState();
   const [newPassConfirm, setnewPassConfirm] = useState();
 
-  console.log(user);
+  // console.log(user);
   useEffect(() => {
     setTimeout(() => {
       setemail(user.email);
@@ -69,13 +69,13 @@ const Settings = () => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setloader(false);
           toast.success("Song Updated Profile!");
         })
 
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           setloader(false);
           toast.error("Unable to update profile!");
         });
@@ -105,12 +105,14 @@ const Settings = () => {
         }
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
 
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          //console.log(err)
+        });
     } else {
-      console.log("Fill all");
+      // console.log("Fill all");
     }
   };
   if (user) {
