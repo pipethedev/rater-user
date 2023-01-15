@@ -149,7 +149,7 @@ const addsong = () => {
         })
 
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
           toast.error("Song Upload Failed");
           setpayLoader(false);
         });

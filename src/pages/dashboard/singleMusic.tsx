@@ -5,6 +5,7 @@ import { RaterContext } from "../../App";
 import Axios from "axios";
 import { BiMusic } from "react-icons/bi";
 import { HiPlay } from "react-icons/hi";
+import microphone from "../../assets/microphone.svg";
 const singleMusic = () => {
   ///song/:songId
   const navigate = useNavigate();
@@ -328,8 +329,28 @@ const singleMusic = () => {
                   </div>
                 </section>
               ) : (
-                <div className="w-full flex h-[565px] text-[#02123B] font-semibold text-xl">
-                  Admin Feedback: {myMusic.admin_feedback.comment}
+                <div className="w-full flex h-[565px] text-[#02123B] font-semibold text-xl justify-between max-md:justify-center">
+                  {/* Admin Feedback: {myMusic.admin_feedback.comment} */}
+                  <div className="h-full w-[30%] max-md:w-full max-md:hidden bg-[#3B71F7] relative">
+                    <img
+                      src={microphone}
+                      alt=""
+                      className="absolute bottom-0 left-0"
+                    />
+                  </div>
+                  <div className="w-[73%] max-md:w-full h-full flex flex-col gap-4 relative px-4 rounded-2xl border-[1px] border[#E2EAFE]">
+                    <div className="text-[#02123B] text-3xl font-bold">
+                      Administrator
+                    </div>
+                    <div className="text-[#666666] text-xl font-medium">
+                      {myMusic?.admin_feedback.comment}
+                    </div>
+                    <div className="w-full absolute bottom-4 left-0 px-4">
+                      <button className="flex items-center justify-center w-[180px] h-[56px] bg-[#3B71F7] text-[white] font-medium rounded-[64px]">
+                        Give a Reply
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

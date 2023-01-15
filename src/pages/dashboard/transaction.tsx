@@ -83,9 +83,9 @@ const Transaction = () => {
             <path
               d="M1.25 8.5L4.75 5L1.25 1.5"
               stroke="#FFC94C"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div className="text-[#3B71F7] font-semibold text-sm">
