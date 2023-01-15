@@ -290,6 +290,7 @@ const singleMusic = () => {
               ) : side == "reviews" && myMusic.ratings.length > 0 ? (
                 <section className="w-full flex justify-between flex-wrap gap-8">
                   {myMusic.ratings.map((review, key) => {
+                    console.log(review);
                     return (
                       <div
                         key={key}
@@ -298,12 +299,12 @@ const singleMusic = () => {
                         <div className="flex gap-4 items-center">
                           <img
                             src="https://res.cloudinary.com/dfpby8w8f/image/upload/v1673616167/cermuel-api/tmp-3-1673616167191_dbufnm.png"
-                            alt={review.user.first_name}
+                            alt={review.worker.first_name}
                             className="rounded-[50%] w-[56px] h-[56px] object-contain"
                           />
                           <div className="h-[56px] flex items-center">
                             <div className="text-[#02123b] text-base font-semibold">
-                              {review.user.first_name}
+                              {review.worker.first_name}
                             </div>
                           </div>
                         </div>
@@ -329,7 +330,7 @@ const singleMusic = () => {
                   </div>
                 </section>
               ) : (
-                <div className="w-full flex h-[565px] text-[#02123B] font-semibold text-xl justify-between max-md:justify-center">
+                <div className="w-full flex h-[565px] text-[#02123B] font-semibold text-xl justify-between max-md:justify-center gap-4">
                   <div className="h-full w-[30%] max-md:w-full max-md:hidden rounded-2xl bg-[#3B71F7] relative">
                     <img
                       src={microphone}
