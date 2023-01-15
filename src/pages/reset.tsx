@@ -3,23 +3,30 @@ import InputContainer from "../components/InputContainer";
 import PopUpLayout from "../components/PopUpLayout";
 import Axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import { useParams, useNavigate } from "react-router-dom";
 import { RaterContext } from "../App";
 
-const Forgotpassword = () => {
-  const [email, setemail] = useState();
-  const [loading, setloading] = useState(false);
-
+const Reset = () => {
+  let { token } = useParams();
+  const navigate = useNavigate();
   const { baseUrl } = useContext(RaterContext);
-  const forgotPassword = async () => {
+  const [loading, setloading] = useState(false);
+  const [password, setpassword] = useState();
+  const [confirmPassowrd, setconfirmPassowrd] = useState();
+  const changePassword = async () => {
     setloading(true);
-    if (email) {
-      await Axios.post(`${baseUrl}api/v1/auth/forgot-password`, {
-        email: email,
+    if (password && confirmPassowrd) {
+      await Axios.put(`${baseUrl}api/v1/auth/reset-password/${token}`, {
+        password: password,
+        password_confirmation: confirmPassowrd,
       })
         .then((res) => {
           // console.log(res.data.message);
-          toast.success("Check email for the link!");
+          toast.success("Password Reset Successful!");
           setloading(false);
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
         })
         .catch((err) => {
           console.log(err.response);
@@ -46,19 +53,25 @@ const Forgotpassword = () => {
           account!
         </div>
         <InputContainer
-          labelText="Email Address"
-          type="email"
-          onChange={(e) => setemail(e.target.value)}
+          labelText="Password"
+          type="password"
+          onChange={(e) => setpassword(e.target.value)}
+        />{" "}
+        <div className="w-full h-4"></div>
+        <InputContainer
+          labelText="Confirm Password"
+          type="password"
+          onChange={(e) => setconfirmPassowrd(e.target.value)}
         />
         <div className="w-full flex justify-center mt-8">
           <button
-            onClick={forgotPassword}
+            onClick={changePassword}
             disabled={loading}
-            className={`w-[250px] h-[56px] rounded-[56px] text-[white] flex justify-center items-center font-semibold ${
+            className={`w-[280px] h-[56px] rounded-[56px] text-[white] flex justify-center items-center font-semibold ${
               loading ? "bg-[#bdcdf3]" : "bg-[#3B71F7] cursor-pointer"
             }`}
           >
-            Send Link
+            Reset Password
           </button>{" "}
         </div>
       </PopUpLayout>
@@ -66,4 +79,4 @@ const Forgotpassword = () => {
   );
 };
 
-export default Forgotpassword;
+export default Reset;

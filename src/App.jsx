@@ -14,6 +14,7 @@ import SingleMusic from "./pages/dashboard/singleMusic";
 import AddSong from "./pages/dashboard/addsong";
 import Axios from "axios";
 import Forgotpassword from "./pages/forgotpassword";
+import Reset from "./pages/reset";
 
 export const RaterContext = createContext();
 
@@ -60,6 +61,7 @@ const App = () => {
             <Route path="/" element={<Login />} />{" "}
             <Route path="/signup" element={<Signup />} />{" "}
             <Route path="/forgotpassword" element={<Forgotpassword />} />{" "}
+            <Route path="/reset/:token" element={<Reset />} />
           </Routes>
 
           {/* DASHBOARD PAGES */}

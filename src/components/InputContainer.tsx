@@ -10,7 +10,6 @@ export type Input = {
 
 const InputContainer = (Input: Input) => {
   const inputRef = useRef<HTMLInputElement>();
-  console.log(inputRef.current?.type);
   const [see, setsee] = useState(true);
   return (
     <div className={`w-full flex flex-col items-start gap-1 font-grotesk`}>
@@ -21,7 +20,7 @@ const InputContainer = (Input: Input) => {
         {Input.labelText}
       </label>
 
-      <div className="focus:border-[#3B71F7] rounded-[64px] h-[54px] max-md:h-[48px] w-full outline-none font-medium text-[#261C40] text-base flex items-center">
+      <div className="focus:border-[#3B71F7] rounded-[64px] h-[54px] max-md:h-[48px] w-full outline-none font-medium text-[#261C40] text-base flex items-center relative">
         <input
           id="id"
           type={Input.type}
@@ -33,7 +32,7 @@ const InputContainer = (Input: Input) => {
         {Input.type == "password" ? (
           see ? (
             <AiFillEye
-              className="absolute right-16 z-50 cursor-pointer text-[#3B71F7] text-xl"
+              className="absolute right-10 z-50 cursor-pointer text-[#3B71F7] text-xl"
               onClick={() => {
                 setsee(!see);
                 inputRef.current ? (inputRef.current.type = "text") : null;
