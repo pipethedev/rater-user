@@ -531,7 +531,7 @@ const Home = () => {
               </div>
               {/* RECENT MUSICS  */}
               {myMusic.length > 0 ? (
-                <section className="gap-2 max-md:gap-4 mt-8 flex flex-wrap justify-around">
+                <section className="gap-4 mt-8 flex flex-wrap">
                   {myMusic?.slice(0, 4).map((music) => {
                     return (
                       <div

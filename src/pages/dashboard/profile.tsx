@@ -227,7 +227,7 @@ const Profile = () => {
                 <div className="flex gap-2 mb-6 mt-12 w-full">
                   <div>Your Top Songs</div> -<div>Based off Reviews</div>
                 </div>
-                <div className="w-full flex-wrap flex gap-2 justify-around max-md:gap-4 scrollbar-hide">
+                <div className="w-full flex-wrap flex gap-2 max-md:gap-4 scrollbar-hide">
                   {myMusic.length > 0 &&
                     myMusic?.map((music) => {
                       return (
@@ -245,17 +245,17 @@ const Profile = () => {
                             {/* <div className="font-medium text-[#666666] text-sm max-sm:text-[12px]">
                               {music.playTime}
                             </div> */}
-                            {music.rating == "Good" ? (
+                            {music?.ratings[0].rating == "Good" ? (
                               <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music?.ratings[0].rating}
                               </div>
-                            ) : music.rating == "Average" ? (
+                            ) : music.ratings[0].rating == "Fair" ? (
                               <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music?.ratings[0].rating}
                               </div>
-                            ) : music.rating == "Bad" ? (
+                            ) : music.ratings[0].rating == "Bad" ? (
                               <div className="text-[#e94444] font-semibold text-base max-md:text-sm bg-[#ffc107] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                                {music.rating}
+                                {music?.ratings[0].rating}
                               </div>
                             ) : (
                               <div className="font-bold text-sm text-[#3a00c2]">

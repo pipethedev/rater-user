@@ -177,15 +177,15 @@ const singleMusic = () => {
                 {myMusic.title}
               </div>
             </div>
-            <section className="flex max-md:flex-wrap my-6">
-              <div className="max-md:w-full w-[30%] flex max-md:justify-center">
+            <section className="flex max-md:gap-4 my-6">
+              <div className="w-[30%] flex">
                 <svg
                   width="244"
                   height="330"
                   viewBox="0 0 244 330"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="max-md:w-[200px] max-md:h-[290px]"
+                  className="max-sm:w-[200px] max-sm:h-[290px]"
                 >
                   <rect width="244" height="330" rx="16" fill="#F5F8FF" />
                   <g clipPath="url(#clip0_565_3008)">
@@ -206,8 +206,8 @@ const singleMusic = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="w-[70%] flex flex-col justify-center max-md:w-full">
-                <div className="text-[black] font-semibold text-[40px] max-md:text-2xl">
+              <div className="w-[70%] flex flex-col justify-center">
+                <div className="text-[black] font-semibold text-[40px] max-sm:text-2xl">
                   {myMusic?.title}
                 </div>
                 <div className="font-medium text-[40px] text-[#3b71f7] underline cursor-pointer">
@@ -330,25 +330,19 @@ const singleMusic = () => {
                 </section>
               ) : (
                 <div className="w-full flex h-[565px] text-[#02123B] font-semibold text-xl justify-between max-md:justify-center">
-                  {/* Admin Feedback: {myMusic.admin_feedback.comment} */}
-                  <div className="h-full w-[30%] max-md:w-full max-md:hidden bg-[#3B71F7] relative">
+                  <div className="h-full w-[30%] max-md:w-full max-md:hidden rounded-2xl bg-[#3B71F7] relative">
                     <img
                       src={microphone}
                       alt=""
                       className="absolute bottom-0 left-0"
                     />
                   </div>
-                  <div className="w-[73%] max-md:w-full h-full flex flex-col gap-4 relative px-4 rounded-2xl border-[1px] border[#E2EAFE]">
+                  <div className="w-[73%] max-md:w-full h-full pt-10 flex flex-col gap-4 relative px-4 rounded-2xl border-[1px] border[#E2EAFE]">
                     <div className="text-[#02123B] text-3xl font-bold">
                       Administrator
                     </div>
                     <div className="text-[#666666] text-xl font-medium">
                       {myMusic?.admin_feedback.comment}
-                    </div>
-                    <div className="w-full absolute bottom-4 left-0 px-4">
-                      <button className="flex items-center justify-center w-[180px] h-[56px] bg-[#3B71F7] text-[white] font-medium rounded-[64px]">
-                        Give a Reply
-                      </button>
                     </div>
                   </div>
                 </div>
