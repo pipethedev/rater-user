@@ -88,8 +88,8 @@ const addsong = () => {
     // Implementation for whatever you want to do with reference and after success call.
     // console.log(reference);
     ref = reference.reference;
-    // location.reload();
-    setsteps(2);
+    location.reload();
+    // setsteps(2);
   };
 
   // you can call this function anything
