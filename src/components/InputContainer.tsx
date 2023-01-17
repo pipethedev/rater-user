@@ -40,7 +40,7 @@ const InputContainer = (Input: Input) => {
             />
           ) : (
             <AiFillEyeInvisible
-              className="absolute right-16 z-50 cursor-pointer text-[#3B71F7] text-xl"
+              className="absolute right-10 z-50 cursor-pointer text-[#3B71F7] text-xl"
               onClick={() => {
                 setsee(!see);
                 inputRef.current ? (inputRef.current.type = "password") : null;
