@@ -27,6 +27,7 @@ const Library = () => {
     })
       .then((res) => {
         setmyMusic(res.data.data);
+        console.log(res.data.data);
       })
 
       .catch((err) => {
@@ -84,12 +85,6 @@ const Library = () => {
       </svg>
     );
   };
-
-  // setTimeout(() => {
-  //   if (myMusic.length == 0) {
-  //     navigate("/dashboard/sound/addmusic");
-  //   }
-  // }, 3000);
 
   //Search implemented
 

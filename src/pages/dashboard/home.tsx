@@ -181,7 +181,7 @@ const Home = () => {
           {songsAvail ? (
             <div>
               <div className="text-[28px] font-semibold text-[black] px-3">
-                Hi, Emmanuel
+                Hi, {user?.first_name}
               </div>
               <div className="text-[#888888] mt-1 mb-8 font-medium text-sm px-3">
                 Welcome to Music Rater. Here’s a nibble of stuff you need to

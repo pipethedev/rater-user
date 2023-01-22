@@ -7,6 +7,8 @@ import { Country } from "../signup";
 import Axios from "axios";
 import { RaterContext } from "../../App";
 import { Toaster, toast } from "react-hot-toast";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -25,18 +27,10 @@ const Settings = () => {
     }
   }, []);
 
-  function getFlagEmoji(countryCode) {
-    const codePoints = countryCode
-      .toUpperCase()
-      .split("")
-      .map((char) => 127397 + char.charCodeAt());
-    return String.fromCodePoint(...codePoints);
-  }
   const [firstName, setfirstName] = useState();
   const [lastName, setlastName] = useState();
   const [email, setemail] = useState();
   const [phoneNo, setphoneNo] = useState<string>();
-  const [conCode, setconCode] = useState<string>("+234");
   const [oldPass, setoldPass] = useState();
   const [newPass, setnewPass] = useState();
   const [newPassConfirm, setnewPassConfirm] = useState();
@@ -226,37 +220,29 @@ const Settings = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-2 pl-4">
-                      {" "}
-                      <label
-                        htmlFor=""
-                        className="text-sm text-[#02123B] font-semibold tracking-[-0.01em]"
-                      >
-                        Mobile Number
-                      </label>
-                      <div className="flex w-full gap-4">
-                        <select
-                          name=""
-                          id=""
-                          className={`focus:border-[#3B71F7] border-[1px] border-[#CCCCCC] rounded-[64px] h-[54px] w-[22%] max-sm:w-[35%] outline-none font-medium text-[#261C40] text-base`}
-                          onChange={(e) => setconCode(e.target.value)}
+                      <div className="flex flex-col gap-2">
+                        {" "}
+                        <label
+                          htmlFor=""
+                          className="text-sm text-[#02123B] font-semibold tracking-[-0.01em]"
                         >
-                          {countries.map((country: Country) => {
-                            return (
-                              <option value={country.dial_code}>
-                                {getFlagEmoji(country.code)} {country.dial_code}
-                              </option>
-                            );
-                          })}
-                        </select>
-                        <div className="w-[78%]">
-                          <input
-                            type="text"
-                            className={`focus:border-[#3B71F7] border-[1px] border-[#CCCCCC] rounded-[64px] h-[54px] p-4 w-full outline-none font-medium text-[#261C40] text-base`}
-                            onChange={(e) =>
-                              setphoneNo(conCode + e.target.value)
-                            }
-                          />
-                        </div>
+                          Mobile Number
+                        </label>
+                        <PhoneInput
+                          country={"us"}
+                          value={phoneNo}
+                          onChange={setphoneNo}
+                          inputStyle={{
+                            borderRadius: "64px",
+                            width: "100%",
+                            height: "64px",
+                            fontWeight: "500",
+                            color: "#261C40",
+                          }}
+                          buttonStyle={{
+                            borderRadius: "64px 0 0 64px",
+                          }}
+                        />
                       </div>
                       <div className="w-full mt-6">
                         <InputContainer
