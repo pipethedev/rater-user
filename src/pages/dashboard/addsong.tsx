@@ -335,7 +335,7 @@ const addsong = () => {
                         type="file"
                         className="hidden"
                         onChange={(e) => handleChange(e)}
-                        accept="audio/mp3,audio/*;capture=microphone"
+                        accept="audio/mp3,audio/*,.m4a.mkv;capture=microphone"
                       />
                       <label
                         htmlFor="dropzone-file"
