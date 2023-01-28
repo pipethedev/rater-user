@@ -491,19 +491,6 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-[31%] max-lg:w-full h-[140px] rounded-xl bg-[#F5FFFC] flex items-center gap-4 px-4">
-                  {svgDollar()}
-                  <div className="flex flex-col">
-                    <div className="font-bold text-[32px] flex text-[black]">
-                      {formatKoboAmountForDisplay(
-                        Number(`${stats?.payments}00`)
-                      )}
-                    </div>
-                    <div className="text-[#888888] font-medium text-base">
-                      Total payments made
-                    </div>
-                  </div>
-                </div>
               </div>
               <div className="flex justify-between w-full items-center">
                 <div className="text-lg font-medium pt-8 pb-4">
