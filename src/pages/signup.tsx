@@ -32,6 +32,7 @@ const Signup = () => {
   const [mobileNo, setmobileNo] = useState<string>();
   const [loading, setloading] = useState(false);
 
+  console.log(mobileNo);
   const handleSignUp = async () => {
     setloading(true);
     if (firstname && lastName && email && password && mobileNo) {
@@ -117,7 +118,7 @@ const Signup = () => {
             >
               Mobile Number
             </label>
-            <PhoneInput
+            {/* <PhoneInput
               country={"us"}
               value={mobileNo}
               onChange={setmobileNo}
@@ -131,7 +132,7 @@ const Signup = () => {
               buttonStyle={{
                 borderRadius: "64px 0 0 64px",
               }}
-            />
+            /> */}
           </div>
           <div>
             <InputContainer
