@@ -118,8 +118,8 @@ const Signup = () => {
             >
               Mobile Number
             </label>
-            {/* <PhoneInput
-              country={"us"}
+            <PhoneInput
+              country="us"
               value={mobileNo}
               onChange={setmobileNo}
               inputStyle={{
@@ -132,7 +132,7 @@ const Signup = () => {
               buttonStyle={{
                 borderRadius: "64px 0 0 64px",
               }}
-            /> */}
+            />
           </div>
           <div>
             <InputContainer
