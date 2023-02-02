@@ -3,9 +3,9 @@ import SignupImage from "../assets/signup.svg";
 import InputContainer from "../components/InputContainer";
 import { RaterContext } from "../App";
 import Axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
-import PhoneInput from "react-phone-input-2";
+import RS from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 export interface Country {
   name?: string;
@@ -21,6 +21,8 @@ export interface SignupValues {
   password?: string;
 }
 
+const PhoneInput = (RS as any).default ? (RS as any).default : RS;
+
 const Signup = () => {
   const navigate = useNavigate();
   const { baseUrl } = useContext(RaterContext);
@@ -32,7 +34,6 @@ const Signup = () => {
   const [mobileNo, setmobileNo] = useState<any>();
   const [loading, setloading] = useState(false);
 
-  console.log(typeof mobileNo + ", " + mobileNo);
   const handleSignUp = async () => {
     setloading(true);
     if (firstname && lastName && email && password && mobileNo) {
