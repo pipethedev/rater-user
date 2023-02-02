@@ -119,19 +119,19 @@ const Signup = () => {
               Mobile Number
             </label>
             <PhoneInput
-              country="us"
-              value={mobileNo}
-              // onChange={(e) => setmobileNo(e)}
-              inputStyle={{
-                borderRadius: "64px",
-                width: "100%",
-                height: "64px",
-                fontWeight: 500,
-                color: "#261C40",
-              }}
-              buttonStyle={{
-                borderRadius: "64px 0 0 64px",
-              }}
+            // country="us"
+            // value={mobileNo}
+            // // onChange={(e) => setmobileNo(e)}
+            // inputStyle={{
+            //   borderRadius: "64px",
+            //   width: "100%",
+            //   height: "64px",
+            //   fontWeight: 500,
+            //   color: "#261C40",
+            // }}
+            // buttonStyle={{
+            //   borderRadius: "64px 0 0 64px",
+            // }}
             />
           </div>
           <div>
