@@ -23,7 +23,9 @@ export interface SignupValues {
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { baseUrl } = useContext(RaterContext);
+  // const { baseUrl } = useContext(RaterContext);
+
+  const baseUrl = "https://rater-be.herokuapp.com/";
 
   const [firstname, setfirstname] = useState<string>();
   const [lastName, setlastName] = useState<string>();
