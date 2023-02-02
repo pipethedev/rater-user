@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import SignupImage from "../assets/signup.svg";
 import InputContainer from "../components/InputContainer";
-import countries from "../countries.json";
 import { RaterContext } from "../App";
 import Axios from "axios";
 import { useNavigate } from "react-router";
@@ -44,8 +43,6 @@ const Signup = () => {
         password: password,
       })
         .then((res) => {
-          // console.log(res.data.message);
-
           toast.success(`Successful! Redirecting to Login!`);
           setloading(false);
           setTimeout(() => {
