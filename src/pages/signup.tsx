@@ -126,7 +126,7 @@ const Signup = () => {
                 borderRadius: "64px",
                 width: "100%",
                 height: "64px",
-                fontWeight: "500",
+                fontWeight: 500,
                 color: "#261C40",
               }}
               buttonStyle={{
