@@ -122,16 +122,16 @@ const Signup = () => {
               country="us"
               value={mobileNo}
               onChange={setmobileNo}
-              inputStyle={{
-                borderRadius: "64px",
-                width: "100%",
-                height: "64px",
-                fontWeight: "500",
-                color: "#261C40",
-              }}
-              buttonStyle={{
-                borderRadius: "64px 0 0 64px",
-              }}
+              // inputStyle={{
+              //   borderRadius: "64px",
+              //   width: "100%",
+              //   height: "64px",
+              //   fontWeight: "500",
+              //   color: "#261C40",
+              // }}
+              // buttonStyle={{
+              //   borderRadius: "64px 0 0 64px",
+              // }}
             />
           </div>
           <div>
