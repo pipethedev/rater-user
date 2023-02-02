@@ -23,9 +23,7 @@ export interface SignupValues {
 
 const Signup = () => {
   const navigate = useNavigate();
-  // const { baseUrl } = useContext(RaterContext);
-
-  const baseUrl = "https://rater-be.herokuapp.com/";
+  const { baseUrl } = useContext(RaterContext);
 
   const [firstname, setfirstname] = useState<string>();
   const [lastName, setlastName] = useState<string>();
@@ -93,14 +91,14 @@ const Signup = () => {
               <InputContainer
                 labelText="Firstname"
                 type="text"
-                onChange={(e) => setfirstname(e.target.value)}
+                onChange={(e: any) => setfirstname(e.target.value)}
               />
             </div>
             <div className="w-[50%] max-sm:w-full">
               <InputContainer
                 labelText="Lastname"
                 type="text"
-                onChange={(e) => setlastName(e.target.value)}
+                onChange={(e: any) => setlastName(e.target.value)}
               />
             </div>
           </div>
@@ -108,7 +106,7 @@ const Signup = () => {
             <InputContainer
               type="email"
               labelText="Email Address"
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e: any) => setemail(e.target.value)}
             />
           </div>{" "}
           <div className="flex flex-col gap-2">
@@ -139,7 +137,7 @@ const Signup = () => {
             <InputContainer
               type="password"
               labelText="Password"
-              onChange={(e) => setpassword(e.target.value)}
+              onChange={(e: any) => setpassword(e.target.value)}
             />
           </div>
           <div className="full flex gap-3">
