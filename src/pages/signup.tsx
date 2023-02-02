@@ -29,10 +29,10 @@ const Signup = () => {
   const [lastName, setlastName] = useState<string>();
   const [email, setemail] = useState<string>();
   const [password, setpassword] = useState<string>();
-  const [mobileNo, setmobileNo] = useState<string>();
+  const [mobileNo, setmobileNo] = useState<any>();
   const [loading, setloading] = useState(false);
 
-  console.log(mobileNo);
+  console.log(typeof mobileNo + ", " + mobileNo);
   const handleSignUp = async () => {
     setloading(true);
     if (firstname && lastName && email && password && mobileNo) {
@@ -119,19 +119,19 @@ const Signup = () => {
               Mobile Number
             </label>
             <PhoneInput
-            // country="us"
-            // value={mobileNo}
-            // // onChange={(e) => setmobileNo(e)}
-            // inputStyle={{
-            //   borderRadius: "64px",
-            //   width: "100%",
-            //   height: "64px",
-            //   fontWeight: 500,
-            //   color: "#261C40",
-            // }}
-            // buttonStyle={{
-            //   borderRadius: "64px 0 0 64px",
-            // }}
+              country="us"
+              value={mobileNo}
+              onChange={setmobileNo}
+              inputStyle={{
+                borderRadius: "64px",
+                width: "100%",
+                height: "64px",
+                fontWeight: "500",
+                color: "#261C40",
+              }}
+              buttonStyle={{
+                borderRadius: "64px 0 0 64px",
+              }}
             />
           </div>
           <div>
