@@ -469,7 +469,7 @@ const Home = () => {
                 Always remember you are a star, and you would always be!
               </div>
               <div className="w-full flex flex-wrap gap-1 max-lg:gap-3 justify-around">
-                <div className="w-[31%] max-lg:w-full h-[140px] rounded-xl bg-[#F5F8FF] flex items-center gap-4 px-4">
+                <div className="w-[100%] max-lg:w-full h-[140px] rounded-xl bg-[#F5F8FF] flex items-center gap-4 px-4">
                   {svgMusic()}
                   <div className="flex flex-col">
                     <div className="font-bold text-[32px] text-[black]">
@@ -477,17 +477,6 @@ const Home = () => {
                     </div>
                     <div className="text-[#888888] font-medium text-base">
                       Songs Uploaded
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[31%] max-lg:w-full h-[140px] rounded-xl bg-[#FFFAF0] flex items-center gap-4 px-4">
-                  {svgStar()}
-                  <div className="flex flex-col">
-                    <div className="font-bold text-[32px] text-[black]">
-                      {stats?.ratings}
-                    </div>
-                    <div className="text-[#888888] font-medium text-base">
-                      Your Rating
                     </div>
                   </div>
                 </div>
@@ -563,74 +552,6 @@ const Home = () => {
                   <FcSearch className="text-[100px]" />
                 </div>
               )}
-              <div className="flex justify-between w-full items-center mt-12">
-                <div className="text-lg font-medium pt-8 pb-4">
-                  Recently Transaction
-                </div>
-                <div
-                  className="text-[#3B71F7] text-base font-semibold flex items-center cursor-pointer"
-                  onClick={() => navigate("/dashboard/transaction")}
-                >
-                  View more
-                  <svg
-                    width="56"
-                    height="12"
-                    viewBox="0 0 56 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-3"
-                  >
-                    <path
-                      d="M56.495 6.49497C56.7683 6.22161 56.7683 5.77839 56.495 5.50503L52.0402 1.05025C51.7668 0.776886 51.3236 0.776886 51.0503 1.05025C50.7769 1.32362 50.7769 1.76684 51.0503 2.0402L55.0101 6L51.0503 9.9598C50.7769 10.2332 50.7769 10.6764 51.0503 10.9497C51.3236 11.2231 51.7668 11.2231 52.0402 10.9497L56.495 6.49497ZM0 6.7H28V5.3H0V6.7ZM28 6.7H56V5.3H28V6.7Z"
-                      fill="#3B71F7"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <section className="w-full">
-                <div className="w-full flex h-[64px] bg-[#F5F8FF] items-center mt-10 max-md:gap-1">
-                  <div className="w-[17%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                    DATE
-                  </div>
-                  <div className="w-[20%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                    STATUS
-                  </div>
-                  <div className="w-[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                    AMOUNT
-                  </div>
-                  <div className="w-[42%] max-md:w-[30%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                    REFERENCE
-                  </div>
-                  <div className="w-[10%] max-md:w[12%] text-[#0F1141] font-semibold text-sm pl-2 max-md:text-[11px] max-sm:font-medium">
-                    ACTION
-                  </div>
-                </div>
-
-                <div className="flex flex-col w-full max-md:gap-1">
-                  {transactions?.slice(0, 2).map((transaction) => {
-                    const myDate = new Date(transaction.created_at);
-                    return (
-                      <div className="cursor-pointer flex h-[64px] w-full items-center border-b-[1px] border-[#E3E4F8] gap-1">
-                        <div className="w-[17%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                          {`${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`}
-                        </div>
-                        <div className="w-[20%] pl-2 max-md:w-[30%] text-[#24dd87] font-semibold text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                          {transaction.payment_status}
-                        </div>
-                        <div className="w-[12%] pl-2 text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                          {transaction.amount}
-                        </div>{" "}
-                        <div className="w-[42%] pl-2 max-md:w-[30%] text-[#666666] text-sm max-md:text-[10px] max-md:font-bold flex flex-wrap">
-                          {transaction.pricing_id}
-                        </div>
-                        <div className="w-[10%] pl-2 text-lg flex px-4 justify-end flex-wrap text-[#3B71F7]">
-                          <BsDownload />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
             </div>
           )}
         </DashboardLayout>
