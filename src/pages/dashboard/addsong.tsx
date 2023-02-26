@@ -52,9 +52,9 @@ const addsong = () => {
           // console.log("MOVE TO SECOND STAGE");
           // console.log(paymentReference);
           setsteps(2);
-          swal({
-            text: "Continue unfinished transaction!",
-          });
+          // swal({
+          //   text: "Continue unfinished transaction!",
+          // });
         } else {
           // console.log("SHOULD MOVE TO FIRST STAGE");
           setsteps(1);
@@ -125,6 +125,8 @@ const addsong = () => {
       formData.append("audio", audioFile, fileName);
       formData.append("title", title);
       formData.append("payment_reference", ref);
+
+      console.log(formData);
 
       for (var key of formData.entries()) {
         // console.log(key[1]);
