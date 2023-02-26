@@ -34,18 +34,6 @@ const Navbar = (props) => {
       },
     },
     {
-      name: "transaction",
-      svg: () => {
-        return <AiOutlineDollar />;
-      },
-    },
-    {
-      name: "feedback",
-      svg: () => {
-        return <MdOutlineMessage />;
-      },
-    },
-    {
       name: "profile",
       svg: () => {
         return <HiOutlineUser />;
