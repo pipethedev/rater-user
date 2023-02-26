@@ -217,25 +217,14 @@ const Profile = () => {
             </section>
             <section className="my-10">
               <div className="flex flex-wrap gap-3 w-full justify-center">
-                <div className="w-[48%] max-lg:w-[330px] max-md:w-full h-[140px] rounded-xl flex gap-2 bg-[#FFFAF0] px-4 py-8 xl:gap-4">
-                  {svgStar()}
-                  <div>
-                    <div className="text-[#02123B] font-semibold text-[32px]">
-                      {stats?.ratings}
-                    </div>
-                    <div className="font-medium text-sm text-[#666666]">
-                      Your Ratings
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[48%] max-lg:w-[330px] max-md:w-full h-[140px] rounded-xl flex gap-2 bg-[#F5FFFC] px-4 py-8 xl:gap-4">
+                <div className="w-[100%] max-lg:w-[330px] max-md:w-full h-[140px] rounded-xl flex gap-2 bg-[#F5FFFC] px-4 py-8 xl:gap-4">
                   {svgDollar()}
                   <div>
                     <div className="text-[#02123B] font-semibold text-[32px]">
                       0
                     </div>
                     <div className="font-medium text-sm text-[#666666]">
-                      Admin Feedbacks
+                      Feedbacks
                     </div>
                   </div>
                 </div>
