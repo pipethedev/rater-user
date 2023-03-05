@@ -13,6 +13,10 @@ const singleMusic = () => {
   const { baseUrl, token } = useContext(RaterContext);
   const [myMusic, setmyMusic] = useState<any>();
   let id = useParams();
+
+  const truncate = (string) =>
+    string?.length > 110 ? `${string.substring(0, 104)}...` : string;
+
   const playSvg = () => {
     return (
       <svg
@@ -221,16 +225,16 @@ const singleMusic = () => {
                     Under Review
                   </div>
                 ) : myMusic?.ratings[0]?.rating == "Good" ? (
-                  <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
-                    Overall: Good
+                  <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[125px] flex items-center justify-center">
+                    Accepted, Check Mail
                   </div>
                 ) : myMusic?.ratings[0]?.rating == "Fair" ? (
                   <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
-                    Overall: Fair
+                    Under Review
                   </div>
                 ) : (
-                  <div className="bg-[#e60000] font-semibold text-base max-md:text-sm text-[white] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
-                    Overall: Bad
+                  <div className="bg-[#ec4848] font-semibold text-base max-md:text-sm text-[white] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                    Check Mail
                   </div>
                 )}
                 <div className="h-12 flex items-center mt-8 gap-8">
@@ -317,7 +321,7 @@ const singleMusic = () => {
                           </div>
                         </div>
                         {review.rating == "Good" ? (
-                          <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                          <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[150px] flex items-center justify-center">
                             Accepted, check mail
                           </div>
                         ) : review.rating == "Fair" ? (
@@ -325,7 +329,7 @@ const singleMusic = () => {
                             Under Review
                           </div>
                         ) : review.rating == "Bad" ? (
-                          <div className="text-[white] font-semibold text-base max-md:text-sm bg-[#e60000] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                          <div className="text-[white] font-semibold text-base max-md:text-sm bg-[#ec4848] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
                             Check mail
                           </div>
                         ) : (
@@ -335,7 +339,7 @@ const singleMusic = () => {
                         )}
                         {review.rating == "Bad" && (
                           <div className="w-full pr-4 font-medium text-base text-[#666666]">
-                            {review.dis_like_comment}
+                            {truncate(review?.ai_comment)}
                           </div>
                         )}
                       </div>

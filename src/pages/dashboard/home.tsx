@@ -525,20 +525,20 @@ const Home = () => {
                               {music.playTime}
                             </div> */}
                           {music.ratings[0]?.rating == "Good" ? (
-                            <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                              {music.ratings[0]?.rating}
+                            <div className="text-[#00C288] font-semibold text-sm max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 w-[155px] flex items-center justify-center">
+                              Accepted, Check Mail
                             </div>
                           ) : music.ratings[0]?.rating == "Fair" ? (
-                            <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                              {music.ratings[0]?.rating}
+                            <div className="text-[#3a00c2] font-semibold text-sm max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
+                              Under Review
                             </div>
                           ) : music.ratings[0]?.rating == "Bad" ? (
-                            <div className="text-[#e94444] font-semibold text-base max-md:text-sm bg-[#ffc107] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
-                              {music.ratings[0]?.rating}
+                            <div className="bg-[#ec4848] font-semibold text-sm max-md:text-sm text-[white] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                              Check Mail
                             </div>
                           ) : (
                             <div className="font-bold text-sm text-[#3a00c2]">
-                              No ratings yet
+                              Under Review
                             </div>
                           )}
                         </div>
