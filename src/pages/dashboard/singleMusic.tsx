@@ -218,11 +218,19 @@ const singleMusic = () => {
                 <div className="h-[1px] w-full bg-[#dbd9d9] mt-3 mb-6 max-md:opacity-0 max-md:mt-0"></div>
                 {myMusic.ratings.length == 0 ? (
                   <div className="text-[#999999] text-base font-medium">
-                    No rating yet
+                    Under Review
+                  </div>
+                ) : myMusic?.ratings[0]?.rating == "Good" ? (
+                  <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                    Overall: Good
+                  </div>
+                ) : myMusic?.ratings[0]?.rating == "Fair" ? (
+                  <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                    Overall: Fair
                   </div>
                 ) : (
-                  <div className="bg-[#ebfff9] w-[135px] text-sm font-semibold text-[#00c288] py-3 text-center rounded-[64px]">
-                    Overall: {myMusic.ratings[0]?.rating}
+                  <div className="bg-[#e60000] font-semibold text-base max-md:text-sm text-[white] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                    Overall: Bad
                   </div>
                 )}
                 <div className="h-12 flex items-center mt-8 gap-8">
@@ -308,12 +316,28 @@ const singleMusic = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="bg-[#ebfff9] w-[100px] text-sm font-semibold text-[#00c288] py-1 text-center rounded-[64px]">
-                          {review.rating}
-                        </div>
-                        <div className="w-full pr-4 font-medium text-base text-[#666666]">
-                          {review.comment}
-                        </div>
+                        {review.rating == "Good" ? (
+                          <div className="text-[#00C288] font-semibold text-base max-md:text-sm bg-[#EBFFF9] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                            Accepted, check mail
+                          </div>
+                        ) : review.rating == "Fair" ? (
+                          <div className="text-[#3a00c2] font-semibold text-base max-md:text-sm bg-[#d1c2f5] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                            Under Review
+                          </div>
+                        ) : review.rating == "Bad" ? (
+                          <div className="text-[white] font-semibold text-base max-md:text-sm bg-[#e60000] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                            Check mail
+                          </div>
+                        ) : (
+                          <div className="font-bold text-sm text-[#3a00c2]">
+                            Under Review
+                          </div>
+                        )}
+                        {review.rating == "Bad" && (
+                          <div className="w-full pr-4 font-medium text-base text-[#666666]">
+                            {review.dis_like_comment}
+                          </div>
+                        )}
                       </div>
                     );
                   })}

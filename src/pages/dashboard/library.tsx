@@ -195,12 +195,12 @@ const Library = () => {
                                 {music.ratings[0]?.rating}
                               </div>
                             ) : music.ratings[0]?.rating == "Bad" ? (
-                              <div className="text-[#e94444] font-semibold text-base max-md:text-sm bg-[#ffc107] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
+                              <div className="text-[white] font-semibold text-base max-md:text-sm bg-[#e60000] rounded-[64px] p-1 w-[75px] flex items-center justify-center">
                                 {music.ratings[0]?.rating}
                               </div>
                             ) : (
                               <div className="font-bold text-sm text-[#3a00c2]">
-                                No ratings yet
+                                Under Review
                               </div>
                             )}
                           </div>

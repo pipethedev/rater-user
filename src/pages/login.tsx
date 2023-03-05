@@ -51,7 +51,7 @@ const Login = () => {
         })
         .catch((err) => {
           console.log(err);
-          toast.error(err.response.data.message);
+          toast.error("Login failed");
           setloading(false);
         });
     } else {
