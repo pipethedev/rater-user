@@ -221,7 +221,7 @@ const singleMusic = () => {
                 </div>
                 <div className="h-[1px] w-full bg-[#dbd9d9] mt-3 mb-6 max-md:opacity-0 max-md:mt-0"></div>
                 {myMusic.ratings.length == 0 ? (
-                  <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                  <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                     Under Review
                   </div>
                 ) : myMusic?.ratings[0]?.rating == "Good" ? (
@@ -229,7 +229,7 @@ const singleMusic = () => {
                     Accepted, Check Mail
                   </div>
                 ) : myMusic?.ratings[0]?.rating == "Fair" ? (
-                  <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                  <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                     Under Review
                   </div>
                 ) : (
@@ -325,7 +325,7 @@ const singleMusic = () => {
                             Accepted, check mail
                           </div>
                         ) : review.rating == "Fair" ? (
-                          <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                          <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                             Under Review
                           </div>
                         ) : review.rating == "Bad" ? (
@@ -333,7 +333,7 @@ const singleMusic = () => {
                             Check mail
                           </div>
                         ) : (
-                          <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                          <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                             Under Review
                           </div>
                         )}

@@ -529,7 +529,7 @@ const Home = () => {
                               Accepted, Check Mail
                             </div>
                           ) : music.ratings[0]?.rating == "Fair" ? (
-                            <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                            <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                               Under Review
                             </div>
                           ) : music.ratings[0]?.rating == "Bad" ? (
@@ -537,7 +537,7 @@ const Home = () => {
                               Check Mail
                             </div>
                           ) : (
-                            <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[110px] flex items-center justify-center">
+                            <div className="text-[orange] font-semibold text-base max-md:text-sm bg-[#f8f888] rounded-[64px] p-1 max-w-[120px] flex items-center justify-center">
                               Under Review
                             </div>
                           )}
